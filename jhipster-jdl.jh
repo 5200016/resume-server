@@ -15,7 +15,6 @@ entity SRole {
 
 relationship ManyToMany {
      SLogin{role} to SRole{login}
-
 }
 
 service * with serviceImpl

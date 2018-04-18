@@ -3,8 +3,12 @@ package com.resume.service.impl;
 import com.resume.service.SLoginService;
 import com.resume.domain.SLogin;
 import com.resume.repository.SLoginRepository;
+import com.resume.web.rest.util.DateUtil;
+import com.resume.web.rest.util.TypeUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +20,9 @@ import java.util.List;
 @Service
 @Transactional
 public class SLoginServiceImpl implements SLoginService{
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     private final Logger log = LoggerFactory.getLogger(SLoginServiceImpl.class);
 
@@ -71,5 +78,29 @@ public class SLoginServiceImpl implements SLoginService{
     public void delete(Long id) {
         log.debug("Request to delete SLogin : {}", id);
         sLoginRepository.delete(id);
+    }
+
+    /**
+     * 用户注册
+     */
+    @Override
+    public SLogin registerUser(SLogin login) {
+        login.setPassword(passwordEncoder.encode(login.getPassword()));
+        login.setIsActive(true);
+        login.setCreateTime(DateUtil.getZoneDateTime());
+        login.setUpdateTime(DateUtil.getZoneDateTime());
+        return sLoginRepository.save(login);
+    }
+
+    /**
+     * 通过用户名查询用户信息
+     * @return
+     */
+    @Override
+    public SLogin findUserByUsername(String username) {
+        if(TypeUtils.isEmpty(username)){
+           return null ;
+        }
+        return sLoginRepository.findOneByUsername(username);
     }
 }

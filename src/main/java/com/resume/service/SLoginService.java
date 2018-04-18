@@ -37,4 +37,14 @@ public interface SLoginService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+
+    /**
+     * 用户注册
+     */
+    SLogin registerUser(SLogin login);
+
+    /**
+     * 通过用户名查询用户信息
+     */
+    SLogin findUserByUsername(String username);
 }
