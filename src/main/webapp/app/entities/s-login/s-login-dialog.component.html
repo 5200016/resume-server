@@ -1,0 +1,60 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="mySLoginLabel" jhiTranslate="resumeApp.sLogin.home.createOrEditLabel">Create or edit a S Login</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!sLogin.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="sLogin.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.sLogin.username" for="field_username">Username</label>
+            <input type="text" class="form-control" name="username" id="field_username"
+                [(ngModel)]="sLogin.username"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.sLogin.password" for="field_password">Password</label>
+            <input type="text" class="form-control" name="password" id="field_password"
+                [(ngModel)]="sLogin.password"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.sLogin.isActive" for="field_isActive">Is Active</label>
+            <input type="checkbox" class="form-control" name="isActive" id="field_isActive"
+                [(ngModel)]="sLogin.isActive"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.sLogin.createTime" for="field_createTime">Create Time</label>
+            <div class="d-flex">
+                <input id="field_createTime" type="datetime-local" class="form-control" name="createTime" [(ngModel)]="sLogin.createTime"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.sLogin.updateTime" for="field_updateTime">Update Time</label>
+            <div class="d-flex">
+                <input id="field_updateTime" type="datetime-local" class="form-control" name="updateTime" [(ngModel)]="sLogin.updateTime"
+                  />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label jhiTranslate="resumeApp.sLogin.role" for="field_role">Role</label>
+            <select class="form-control" id="field_role" multiple name="role" [(ngModel)]="sLogin.roles">
+                <option [ngValue]="getSelected(sLogin.roles, sRoleOption)" *ngFor="let sRoleOption of sroles; trackBy: trackSRoleById">{{sRoleOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

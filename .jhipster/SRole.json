@@ -1,0 +1,35 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "login",
+            "otherEntityName": "sLogin",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "role"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "roleName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isActive",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "createTime",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "updateTime",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20180410075730",
+    "entityTableName": "s_role",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl"
+}

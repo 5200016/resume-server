@@ -1,0 +1,21 @@
+entity SLogin {
+     Username String,
+     Password String,
+     IsActive Boolean,
+     CreateTime ZonedDateTime,
+     UpdateTime ZonedDateTime
+}
+
+entity SRole {
+     RoleName String,
+     IsActive Boolean,
+     CreateTime ZonedDateTime,
+     UpdateTime ZonedDateTime
+}
+
+relationship ManyToMany {
+     SLogin{role} to SRole{login}
+
+}
+
+service * with serviceImpl

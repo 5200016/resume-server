@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity SLogin.
+    -->
+    <changeSet id="20180410075729-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="slogins_id"
+                                 baseTableName="slogin_role"
+                                 constraintName="fk_slogin_role_slogins_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="s_login"/>
+        <addForeignKeyConstraint baseColumnNames="roles_id"
+                                 baseTableName="slogin_role"
+                                 constraintName="fk_slogin_role_roles_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="s_role"/>
+        
+    </changeSet>
+</databaseChangeLog>

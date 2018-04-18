@@ -1,0 +1,47 @@
+
+<div *ngIf="sLogin">
+    <h2><span jhiTranslate="resumeApp.sLogin.detail.title">S Login</span> {{sLogin.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="resumeApp.sLogin.username">Username</span></dt>
+        <dd>
+            <span>{{sLogin.username}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.sLogin.password">Password</span></dt>
+        <dd>
+            <span>{{sLogin.password}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.sLogin.isActive">Is Active</span></dt>
+        <dd>
+            <span>{{sLogin.isActive}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.sLogin.createTime">Create Time</span></dt>
+        <dd>
+            <span>{{sLogin.createTime | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.sLogin.updateTime">Update Time</span></dt>
+        <dd>
+            <span>{{sLogin.updateTime | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.sLogin.role">Role</span></dt>
+        <dd>
+            <span *ngFor="let role of sLogin.roles; let last = last">
+                <a [routerLink]="['/s-role', role?.id ]">{{role.id}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 's-login/'+ sLogin.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,70 @@
+<div>
+    <h2>
+        <span jhiTranslate="resumeApp.sLogin.home.title">S Logins</span>
+        <button class="btn btn-primary float-right create-s-login" [routerLink]="['/', { outlets: { popup: ['s-login-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="resumeApp.sLogin.home.createLabel">
+            Create new S Login
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="sLogins">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="resumeApp.sLogin.username">Username</span></th>
+            <th><span jhiTranslate="resumeApp.sLogin.password">Password</span></th>
+            <th><span jhiTranslate="resumeApp.sLogin.isActive">Is Active</span></th>
+            <th><span jhiTranslate="resumeApp.sLogin.createTime">Create Time</span></th>
+            <th><span jhiTranslate="resumeApp.sLogin.updateTime">Update Time</span></th>
+            <th><span jhiTranslate="resumeApp.sLogin.role">Role</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let sLogin of sLogins ;trackBy: trackId">
+                <td><a [routerLink]="['../s-login', sLogin.id ]">{{sLogin.id}}</a></td>
+                <td>{{sLogin.username}}</td>
+                <td>{{sLogin.password}}</td>
+                <td>{{sLogin.isActive}}</td>
+                <td>{{sLogin.createTime | date:'medium'}}</td>
+                <td>{{sLogin.updateTime | date:'medium'}}</td>
+                <td>
+                    <span *ngFor="let role of sLogin.roles; let last = last">
+                            <a class="form-control-static" [routerLink]="['../s-role', role?.id ]">{{role.id}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../s-login', sLogin.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 's-login/'+ sLogin.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 's-login/'+ sLogin.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

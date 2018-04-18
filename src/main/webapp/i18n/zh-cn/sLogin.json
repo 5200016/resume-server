@@ -1,0 +1,26 @@
+{
+    "resumeApp": {
+        "sLogin" : {
+            "home": {
+                "title": "S Logins",
+                "createLabel": "Create a new S Login",
+                "createOrEditLabel": "Create or edit a S Login"
+            },
+            "created": "A new S Login is created with identifier {{ param }}",
+            "updated": "A S Login is updated with identifier {{ param }}",
+            "deleted": "A S Login is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete S Login {{ id }}?"
+            },
+            "detail": {
+                "title": "S Login"
+            },
+            "username": "Username",
+            "password": "Password",
+            "isActive": "Is Active",
+            "createTime": "Create Time",
+            "updateTime": "Update Time",
+            "role": "Role"
+        }
+    }
+}
