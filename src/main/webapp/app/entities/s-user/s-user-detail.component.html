@@ -1,0 +1,57 @@
+
+<div *ngIf="sUser">
+    <h2><span jhiTranslate="resumeApp.sUser.detail.title">S User</span> {{sUser.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="resumeApp.sUser.username">Username</span></dt>
+        <dd>
+            <span>{{sUser.username}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.sUser.nickname">Nickname</span></dt>
+        <dd>
+            <span>{{sUser.nickname}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.sUser.avatar">Avatar</span></dt>
+        <dd>
+            <span>{{sUser.avatar}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.sUser.city">City</span></dt>
+        <dd>
+            <span>{{sUser.city}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.sUser.jobStatus">Job Status</span></dt>
+        <dd>
+            <span>{{sUser.jobStatus}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.sUser.extra">Extra</span></dt>
+        <dd>
+            <span>{{sUser.extra}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.sUser.isActive">Is Active</span></dt>
+        <dd>
+            <span>{{sUser.isActive}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.sUser.createTime">Create Time</span></dt>
+        <dd>
+            <span>{{sUser.createTime | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.sUser.updateTime">Update Time</span></dt>
+        <dd>
+            <span>{{sUser.updateTime | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 's-user/'+ sUser.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

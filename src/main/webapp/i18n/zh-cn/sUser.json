@@ -1,0 +1,29 @@
+{
+    "resumeApp": {
+        "sUser" : {
+            "home": {
+                "title": "S Users",
+                "createLabel": "Create a new S User",
+                "createOrEditLabel": "Create or edit a S User"
+            },
+            "created": "A new S User is created with identifier {{ param }}",
+            "updated": "A S User is updated with identifier {{ param }}",
+            "deleted": "A S User is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete S User {{ id }}?"
+            },
+            "detail": {
+                "title": "S User"
+            },
+            "username": "Username",
+            "nickname": "Nickname",
+            "avatar": "Avatar",
+            "city": "City",
+            "jobStatus": "Job Status",
+            "extra": "Extra",
+            "isActive": "Is Active",
+            "createTime": "Create Time",
+            "updateTime": "Update Time"
+        }
+    }
+}

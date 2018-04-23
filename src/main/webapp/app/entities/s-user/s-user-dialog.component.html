@@ -1,0 +1,74 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="mySUserLabel" jhiTranslate="resumeApp.sUser.home.createOrEditLabel">Create or edit a S User</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!sUser.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="sUser.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.sUser.username" for="field_username">Username</label>
+            <input type="text" class="form-control" name="username" id="field_username"
+                [(ngModel)]="sUser.username"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.sUser.nickname" for="field_nickname">Nickname</label>
+            <input type="text" class="form-control" name="nickname" id="field_nickname"
+                [(ngModel)]="sUser.nickname"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.sUser.avatar" for="field_avatar">Avatar</label>
+            <input type="text" class="form-control" name="avatar" id="field_avatar"
+                [(ngModel)]="sUser.avatar"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.sUser.city" for="field_city">City</label>
+            <input type="text" class="form-control" name="city" id="field_city"
+                [(ngModel)]="sUser.city"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.sUser.jobStatus" for="field_jobStatus">Job Status</label>
+            <input type="number" class="form-control" name="jobStatus" id="field_jobStatus"
+                [(ngModel)]="sUser.jobStatus"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.sUser.extra" for="field_extra">Extra</label>
+            <input type="text" class="form-control" name="extra" id="field_extra"
+                [(ngModel)]="sUser.extra"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.sUser.isActive" for="field_isActive">Is Active</label>
+            <input type="checkbox" class="form-control" name="isActive" id="field_isActive"
+                [(ngModel)]="sUser.isActive"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.sUser.createTime" for="field_createTime">Create Time</label>
+            <div class="d-flex">
+                <input id="field_createTime" type="datetime-local" class="form-control" name="createTime" [(ngModel)]="sUser.createTime"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.sUser.updateTime" for="field_updateTime">Update Time</label>
+            <div class="d-flex">
+                <input id="field_updateTime" type="datetime-local" class="form-control" name="updateTime" [(ngModel)]="sUser.updateTime"
+                  />
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
