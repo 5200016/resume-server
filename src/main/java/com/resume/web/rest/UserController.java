@@ -94,7 +94,7 @@ public class UserController {
      * 修改用户个人信息
      * @throws URISyntaxException
      */
-    @ApiOperation("修改用户个人信息 RequestParam")
+    @ApiOperation("修改用户个人信息 RequestBody")
     @PutMapping("/update/info")
     @Timed
     public ResultObj updateUserInfo(@ApiParam(name="user",value="用户实体",required=true) @RequestBody SUser user) throws URISyntaxException {
