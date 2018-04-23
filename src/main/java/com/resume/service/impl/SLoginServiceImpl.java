@@ -1,13 +1,15 @@
 package com.resume.service.impl;
 
+import com.resume.domain.SUser;
+import com.resume.repository.SUserRepository;
 import com.resume.service.SLoginService;
 import com.resume.domain.SLogin;
 import com.resume.repository.SLoginRepository;
 import com.resume.web.rest.util.DateUtil;
+import com.resume.web.rest.util.ResultObj;
 import com.resume.web.rest.util.TypeUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,15 +23,18 @@ import java.util.List;
 @Transactional
 public class SLoginServiceImpl implements SLoginService{
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
     private final Logger log = LoggerFactory.getLogger(SLoginServiceImpl.class);
 
     private final SLoginRepository sLoginRepository;
 
-    public SLoginServiceImpl(SLoginRepository sLoginRepository) {
+    private final PasswordEncoder passwordEncoder;
+
+    private final SUserRepository userRepository;
+
+    public SLoginServiceImpl(SLoginRepository sLoginRepository, PasswordEncoder passwordEncoder, SUserRepository userRepository) {
         this.sLoginRepository = sLoginRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.userRepository = userRepository;
     }
 
     /**
@@ -84,16 +89,33 @@ public class SLoginServiceImpl implements SLoginService{
      * 用户注册
      */
     @Override
-    public SLogin registerUser(SLogin login) {
+    public ResultObj registerUser(SLogin login) {
+        SLogin user = sLoginRepository.findOneByUsername(login.getUsername());
+        SUser sUser = userRepository.findUserByUsername(login.getUsername());
+        if(!TypeUtils.isEmpty(user) && !TypeUtils.isEmpty(sUser)){
+            return ResultObj.backInfo(false,200,"用户已存在",false);
+        }
+
+        //保存用户登录信息
         login.setPassword(passwordEncoder.encode(login.getPassword()));
         login.setIsActive(true);
         login.setCreateTime(DateUtil.getZoneDateTime());
         login.setUpdateTime(DateUtil.getZoneDateTime());
-        return sLoginRepository.save(login);
+
+
+        //保存用户基本信息
+        SUser userInfo = new SUser();
+        userInfo.setNickname(login.getUsername());
+        userInfo.setUsername(login.getUsername());
+        userInfo.setIsActive(true);
+        userInfo.setCreateTime(DateUtil.getZoneDateTime());
+        userInfo.setUpdateTime(DateUtil.getZoneDateTime());
+        userRepository.save(userInfo);
+        return ResultObj.back(200,sLoginRepository.save(login));
     }
 
     /**
-     * 通过用户名查询用户信息
+     * 通过用户名查询用户登录信息
      * @return
      */
     @Override
@@ -102,5 +124,21 @@ public class SLoginServiceImpl implements SLoginService{
            return null ;
         }
         return sLoginRepository.findOneByUsername(username);
+    }
+
+    /**
+     * 修改密码
+     */
+    @Override
+    public ResultObj updatePassword(String username, String newPwd, String oldPwd) {
+        SLogin login = sLoginRepository.findOneByUsername(username);
+        if(passwordEncoder.matches(oldPwd, login.getPassword()) == true){
+            login.setUpdateTime(DateUtil.getZoneDateTime());
+            login.setPassword(passwordEncoder.encode(newPwd));
+            sLoginRepository.save(login);
+            return ResultObj.backInfo(true,200,"修改成功",true);
+        }else {
+            return ResultObj.backInfo(false,200,"修改失败",false);
+        }
     }
 }

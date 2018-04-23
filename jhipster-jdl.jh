@@ -13,6 +13,18 @@ entity SRole {
      UpdateTime ZonedDateTime
 }
 
+entity SUser {
+     Username String,
+     Nickname String,
+     Avatar String,
+     City String,
+     JobStatus Integer,
+     Extra String,
+     IsActive Boolean,
+     CreateTime ZonedDateTime,
+     UpdateTime ZonedDateTime
+}
+
 relationship ManyToMany {
      SLogin{role} to SRole{login}
 }

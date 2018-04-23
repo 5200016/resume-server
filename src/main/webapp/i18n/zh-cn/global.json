@@ -9,6 +9,7 @@
                 "main": "数据",
                 "sLogin": "S Login",
                 "sRole": "S Role",
+                "sUser": "S User",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

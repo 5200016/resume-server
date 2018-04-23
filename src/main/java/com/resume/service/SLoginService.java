@@ -1,6 +1,8 @@
 package com.resume.service;
 
 import com.resume.domain.SLogin;
+import com.resume.web.rest.util.ResultObj;
+
 import java.util.List;
 
 /**
@@ -41,10 +43,16 @@ public interface SLoginService {
     /**
      * 用户注册
      */
-    SLogin registerUser(SLogin login);
+    ResultObj registerUser(SLogin login);
 
     /**
-     * 通过用户名查询用户信息
+     * 通过用户名查询用户登录信息
      */
     SLogin findUserByUsername(String username);
+
+    /**
+     * 修改密码
+     */
+    ResultObj updatePassword(String username, String newPwd, String oldPwd);
+
 }

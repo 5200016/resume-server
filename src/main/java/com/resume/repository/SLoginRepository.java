@@ -14,14 +14,15 @@ import java.util.Optional;
 @SuppressWarnings("unused")
 @Repository
 public interface SLoginRepository extends JpaRepository<SLogin,Long> {
+
     /**
      * 验证用户名
      */
     Optional<SLogin> findOneWithAuthoritiesByUsername(String username);
 
     /**
-     * 通过用户名查询用户信息
+     * 通过用户名查询用户登录信息
      */
-    @Query("select login from SLogin login where login.username = ?1 and login.isActive = true")
+    @Query("select login from SLogin login left join fetch login.roles where login.username = ?1 and login.isActive = true")
     SLogin findOneByUsername(String username);
 }

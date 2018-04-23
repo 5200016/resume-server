@@ -38,7 +38,7 @@ public class DomainUserDetailsService implements UserDetailsService {
     @Override
     @Transactional
     public UserDetails loadUserByUsername(final String login) {
-        log.debug("Authenticating {}", login);
+        /*log.debug("Authenticating {}", login);
         if(login.equals("resume")){
             String lowercaseLogin = login.toLowerCase(Locale.ENGLISH);
             Optional<User> userFromDatabase = userRepository.findOneWithAuthoritiesByLogin(lowercaseLogin);
@@ -73,6 +73,47 @@ public class DomainUserDetailsService implements UserDetailsService {
                     user.getPassword(),
                     grantedAuthorities);
             }).orElseThrow(() -> new UsernameNotFoundException("用户 " + lowercaseLogin + " 不存在"));
+        }*/
+
+        log.debug("Authenticating {}", login);
+        if( login.equals("resume")){
+            String lowercaseLogin = login.toLowerCase(Locale.ENGLISH);
+            Optional<User> userByLoginFromDatabase = userRepository.findOneWithAuthoritiesByLogin(lowercaseLogin);
+            return userByLoginFromDatabase.map(user -> createSpringSecurityUser(lowercaseLogin, user))
+                .orElseThrow(() -> new UsernameNotFoundException("用户 " + lowercaseLogin + " 在数据库中没有找到 "
+                ));
         }
+        String lowercaseLogin = login.toLowerCase(Locale.ENGLISH);
+        Optional<SLogin> userByUsernameFromDatabase = loginRepository.findOneWithAuthoritiesByUsername(lowercaseLogin);
+
+        return userByUsernameFromDatabase.map(user -> {
+            if (!user.isIsActive()) {
+                throw new UserNotActivatedException("用户 " + lowercaseLogin + " 没有激活");
+            }
+            /* jwt 赋值默认角色为 ROLE_USER */
+            Set<Authority> authorities = new HashSet<>();
+            Authority auth = new Authority();
+            auth.setName("ROLE_USER");
+            authorities.add(auth);
+            List<GrantedAuthority> grantedAuthorities = authorities.stream()
+                .map(authority -> new SimpleGrantedAuthority(authority.getName()))
+                .collect(Collectors.toList());
+
+            return new org.springframework.security.core.userdetails.User(lowercaseLogin,
+                user.getPassword(),
+                grantedAuthorities);
+        }).orElseThrow(() -> new UsernameNotFoundException("用户" + lowercaseLogin + "不存在"));
+    }
+
+    private org.springframework.security.core.userdetails.User createSpringSecurityUser(String lowercaseLogin, User user) {
+        if (!user.getActivated()) {
+            throw new UserNotActivatedException("用户" + lowercaseLogin + "没有激活");
+        }
+        List<GrantedAuthority> grantedAuthorities = user.getAuthorities().stream()
+            .map(authority -> new SimpleGrantedAuthority(authority.getName()))
+            .collect(Collectors.toList());
+        return new org.springframework.security.core.userdetails.User(user.getLogin(),
+            user.getPassword(),
+            grantedAuthorities);
     }
 }
