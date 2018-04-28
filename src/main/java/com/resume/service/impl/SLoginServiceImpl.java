@@ -107,6 +107,10 @@ public class SLoginServiceImpl implements SLoginService{
         SUser userInfo = new SUser();
         userInfo.setNickname(login.getUsername());
         userInfo.setUsername(login.getUsername());
+        userInfo.setAvatar("../image/emoji.png");
+        userInfo.setCity("未知城市");
+        userInfo.setJobStatus(0);
+        userInfo.setExtra("您还没有留下什么痕迹哦~");
         userInfo.setIsActive(true);
         userInfo.setCreateTime(DateUtil.getZoneDateTime());
         userInfo.setUpdateTime(DateUtil.getZoneDateTime());
