@@ -1,0 +1,84 @@
+<div>
+    <h2>
+        <span jhiTranslate="resumeApp.bTemplate.home.title">B Templates</span>
+        <button class="btn btn-primary float-right create-b-template" [routerLink]="['/', { outlets: { popup: ['b-template-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="resumeApp.bTemplate.home.createLabel">
+            Create new B Template
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="bTemplates">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="resumeApp.bTemplate.url">Url</span></th>
+            <th><span jhiTranslate="resumeApp.bTemplate.description">Description</span></th>
+            <th><span jhiTranslate="resumeApp.bTemplate.clickCount">Click Count</span></th>
+            <th><span jhiTranslate="resumeApp.bTemplate.price">Price</span></th>
+            <th><span jhiTranslate="resumeApp.bTemplate.type">Type</span></th>
+            <th><span jhiTranslate="resumeApp.bTemplate.extra">Extra</span></th>
+            <th><span jhiTranslate="resumeApp.bTemplate.isActive">Is Active</span></th>
+            <th><span jhiTranslate="resumeApp.bTemplate.createTime">Create Time</span></th>
+            <th><span jhiTranslate="resumeApp.bTemplate.updateTime">Update Time</span></th>
+            <th><span jhiTranslate="resumeApp.bTemplate.resume">Resume</span></th>
+            <th><span jhiTranslate="resumeApp.bTemplate.classify">Classify</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let bTemplate of bTemplates ;trackBy: trackId">
+                <td><a [routerLink]="['../b-template', bTemplate.id ]">{{bTemplate.id}}</a></td>
+                <td>{{bTemplate.url}}</td>
+                <td>{{bTemplate.description}}</td>
+                <td>{{bTemplate.clickCount}}</td>
+                <td>{{bTemplate.price}}</td>
+                <td>{{bTemplate.type}}</td>
+                <td>{{bTemplate.extra}}</td>
+                <td>{{bTemplate.isActive}}</td>
+                <td>{{bTemplate.createTime | date:'medium'}}</td>
+                <td>{{bTemplate.updateTime | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="bTemplate.resume">
+                        <a [routerLink]="['../b-resume', bTemplate.resume?.id ]" >{{bTemplate.resume?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <span *ngFor="let classify of bTemplate.classifies; let last = last">
+                            <a class="form-control-static" [routerLink]="['../b-template-classify', classify?.id ]">{{classify.id}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../b-template', bTemplate.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'b-template/'+ bTemplate.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'b-template/'+ bTemplate.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

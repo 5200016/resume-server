@@ -25,8 +25,149 @@ entity SUser {
      UpdateTime ZonedDateTime
 }
 
+entity BAuthor {
+     Username String,
+     LikeCount Integer,
+     WriteCount Integer,
+     Introduction TextBlob,
+     Qualifications TextBlob,
+     Protection TextBlob,
+     Phone String,
+     ResponseTime String,
+     Extra String,
+     IsActive Boolean,
+     CreateTime ZonedDateTime,
+     UpdateTime ZonedDateTime
+}
+
+entity BTemplate {
+     Url String ,
+     Description String,
+     ClickCount Long,
+     Price String,
+     Type Integer,
+     Extra String,
+     IsActive Boolean,
+     CreateTime ZonedDateTime,
+     UpdateTime ZonedDateTime
+}
+
+entity BTemplateClassify {
+     Name String,
+     Type Integer,
+     Extra String,
+     IsActive Boolean,
+     CreateTime ZonedDateTime,
+     UpdateTime ZonedDateTime
+}
+
+entity BResume {
+     Url String ,
+     Status Integer,
+     Extra String,
+     IsActive Boolean,
+     CreateTime ZonedDateTime,
+     UpdateTime ZonedDateTime
+}
+
+entity BInformation {
+     Username String,
+     Name String,
+     Sex String,
+     Birthday String,
+     Education String,
+     Speciality String,
+     WorkTime String,
+     PoliticsStatus String,
+     Marriage String,
+     Skill TextBlob,
+     Address String,
+     Introduction TextBlob,
+     Extra String,
+     IsActive Boolean,
+     CreateTime ZonedDateTime,
+     UpdateTime ZonedDateTime
+}
+
+entity BContact {
+     Username String,
+     Phone String,
+     Email String,
+     Qq String,
+     Wechat String,
+     Extra String,
+     IsActive Boolean,
+     CreateTime ZonedDateTime,
+     UpdateTime ZonedDateTime
+}
+
+entity BWork {
+     Username String,
+     WorkTime String,
+     CompanyName String,
+     JobTitle String,
+     StartTime String,
+     EndTime String,
+     Extra String,
+     IsActive Boolean,
+     CreateTime ZonedDateTime,
+     UpdateTime ZonedDateTime
+}
+
+entity BWorkProject {
+     Name String,
+     Responsible String,
+     StartTime String,
+     EndTime String,
+     Extra String,
+     IsActive Boolean,
+     CreateTime ZonedDateTime,
+     UpdateTime ZonedDateTime
+}
+
+entity BHonour {
+     Username String,
+     Description TextBlob,
+     Extra String,
+     IsActive Boolean,
+     CreateTime ZonedDateTime,
+     UpdateTime ZonedDateTime
+}
+
+entity BHobby {
+     Username String,
+     Description TextBlob,
+     Extra String,
+     IsActive Boolean,
+     CreateTime ZonedDateTime,
+     UpdateTime ZonedDateTime
+}
+
+entity JobObjective {
+     Username String,
+     JobTitle String,
+     JobType String,
+     EnterTime String,
+     SalaryStart String,
+     SalaryEnd String,
+     ExpectCity String,
+     Extra String,
+     IsActive Boolean,
+     CreateTime ZonedDateTime,
+     UpdateTime ZonedDateTime
+}
+
+relationship OneToMany {
+     BWork{workProject} to BWorkProject
+}
+
+relationship OneToOne {
+     BTemplate{resume} to BResume
+}
+
 relationship ManyToMany {
-     SLogin{role} to SRole{login}
+     SLogin{role} to SRole{login},
+     BTemplate{classify} to BTemplateClassify{template}
 }
 
 service * with serviceImpl

@@ -1,0 +1,27 @@
+{
+    "resumeApp": {
+        "bTemplateClassify" : {
+            "home": {
+                "title": "B Template Classifies",
+                "createLabel": "Create a new B Template Classify",
+                "createOrEditLabel": "Create or edit a B Template Classify"
+            },
+            "created": "A new B Template Classify is created with identifier {{ param }}",
+            "updated": "A B Template Classify is updated with identifier {{ param }}",
+            "deleted": "A B Template Classify is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete B Template Classify {{ id }}?"
+            },
+            "detail": {
+                "title": "B Template Classify"
+            },
+            "name": "Name",
+            "type": "Type",
+            "extra": "Extra",
+            "isActive": "Is Active",
+            "createTime": "Create Time",
+            "updateTime": "Update Time",
+            "template": "Template"
+        }
+    }
+}

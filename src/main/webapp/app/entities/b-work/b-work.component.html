@@ -1,0 +1,74 @@
+<div>
+    <h2>
+        <span jhiTranslate="resumeApp.bWork.home.title">B Works</span>
+        <button class="btn btn-primary float-right create-b-work" [routerLink]="['/', { outlets: { popup: ['b-work-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="resumeApp.bWork.home.createLabel">
+            Create new B Work
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="bWorks">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="resumeApp.bWork.username">Username</span></th>
+            <th><span jhiTranslate="resumeApp.bWork.workTime">Work Time</span></th>
+            <th><span jhiTranslate="resumeApp.bWork.companyName">Company Name</span></th>
+            <th><span jhiTranslate="resumeApp.bWork.jobTitle">Job Title</span></th>
+            <th><span jhiTranslate="resumeApp.bWork.startTime">Start Time</span></th>
+            <th><span jhiTranslate="resumeApp.bWork.endTime">End Time</span></th>
+            <th><span jhiTranslate="resumeApp.bWork.extra">Extra</span></th>
+            <th><span jhiTranslate="resumeApp.bWork.isActive">Is Active</span></th>
+            <th><span jhiTranslate="resumeApp.bWork.createTime">Create Time</span></th>
+            <th><span jhiTranslate="resumeApp.bWork.updateTime">Update Time</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let bWork of bWorks ;trackBy: trackId">
+                <td><a [routerLink]="['../b-work', bWork.id ]">{{bWork.id}}</a></td>
+                <td>{{bWork.username}}</td>
+                <td>{{bWork.workTime}}</td>
+                <td>{{bWork.companyName}}</td>
+                <td>{{bWork.jobTitle}}</td>
+                <td>{{bWork.startTime}}</td>
+                <td>{{bWork.endTime}}</td>
+                <td>{{bWork.extra}}</td>
+                <td>{{bWork.isActive}}</td>
+                <td>{{bWork.createTime | date:'medium'}}</td>
+                <td>{{bWork.updateTime | date:'medium'}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../b-work', bWork.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'b-work/'+ bWork.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'b-work/'+ bWork.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+<div>
+    <h2>
+        <span jhiTranslate="resumeApp.bHonour.home.title">B Honours</span>
+        <button class="btn btn-primary float-right create-b-honour" [routerLink]="['/', { outlets: { popup: ['b-honour-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="resumeApp.bHonour.home.createLabel">
+            Create new B Honour
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="bHonours">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="resumeApp.bHonour.username">Username</span></th>
+            <th><span jhiTranslate="resumeApp.bHonour.description">Description</span></th>
+            <th><span jhiTranslate="resumeApp.bHonour.extra">Extra</span></th>
+            <th><span jhiTranslate="resumeApp.bHonour.isActive">Is Active</span></th>
+            <th><span jhiTranslate="resumeApp.bHonour.createTime">Create Time</span></th>
+            <th><span jhiTranslate="resumeApp.bHonour.updateTime">Update Time</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let bHonour of bHonours ;trackBy: trackId">
+                <td><a [routerLink]="['../b-honour', bHonour.id ]">{{bHonour.id}}</a></td>
+                <td>{{bHonour.username}}</td>
+                <td>{{bHonour.description}}</td>
+                <td>{{bHonour.extra}}</td>
+                <td>{{bHonour.isActive}}</td>
+                <td>{{bHonour.createTime | date:'medium'}}</td>
+                <td>{{bHonour.updateTime | date:'medium'}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../b-honour', bHonour.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'b-honour/'+ bHonour.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'b-honour/'+ bHonour.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

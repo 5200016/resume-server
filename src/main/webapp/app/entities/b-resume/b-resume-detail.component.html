@@ -1,0 +1,45 @@
+
+<div *ngIf="bResume">
+    <h2><span jhiTranslate="resumeApp.bResume.detail.title">B Resume</span> {{bResume.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="resumeApp.bResume.url">Url</span></dt>
+        <dd>
+            <span>{{bResume.url}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bResume.status">Status</span></dt>
+        <dd>
+            <span>{{bResume.status}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bResume.extra">Extra</span></dt>
+        <dd>
+            <span>{{bResume.extra}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bResume.isActive">Is Active</span></dt>
+        <dd>
+            <span>{{bResume.isActive}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bResume.createTime">Create Time</span></dt>
+        <dd>
+            <span>{{bResume.createTime | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bResume.updateTime">Update Time</span></dt>
+        <dd>
+            <span>{{bResume.updateTime | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'b-resume/'+ bResume.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

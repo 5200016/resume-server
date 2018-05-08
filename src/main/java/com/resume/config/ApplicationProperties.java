@@ -12,9 +12,27 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties(prefix = "application", ignoreUnknownFields = false)
 public class ApplicationProperties {
     private String jwtprefix;
+    private String filepath;
+    private String avatorpath;
 
     public ApplicationProperties() {
         super();
+    }
+
+    public String getFilepath() {
+        return filepath;
+    }
+
+    public void setFilepath(String filepath) {
+        this.filepath = filepath;
+    }
+
+    public String getAvatorpath() {
+        return avatorpath;
+    }
+
+    public void setAvatorpath(String avatorpath) {
+        this.avatorpath = avatorpath;
     }
 
     public String getJwtprefix() {

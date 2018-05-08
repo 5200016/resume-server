@@ -1,0 +1,65 @@
+
+<div *ngIf="jobObjective">
+    <h2><span jhiTranslate="resumeApp.jobObjective.detail.title">Job Objective</span> {{jobObjective.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="resumeApp.jobObjective.username">Username</span></dt>
+        <dd>
+            <span>{{jobObjective.username}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.jobObjective.jobTitle">Job Title</span></dt>
+        <dd>
+            <span>{{jobObjective.jobTitle}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.jobObjective.jobType">Job Type</span></dt>
+        <dd>
+            <span>{{jobObjective.jobType}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.jobObjective.enterTime">Enter Time</span></dt>
+        <dd>
+            <span>{{jobObjective.enterTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.jobObjective.salaryStart">Salary Start</span></dt>
+        <dd>
+            <span>{{jobObjective.salaryStart}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.jobObjective.salaryEnd">Salary End</span></dt>
+        <dd>
+            <span>{{jobObjective.salaryEnd}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.jobObjective.expectCity">Expect City</span></dt>
+        <dd>
+            <span>{{jobObjective.expectCity}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.jobObjective.extra">Extra</span></dt>
+        <dd>
+            <span>{{jobObjective.extra}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.jobObjective.isActive">Is Active</span></dt>
+        <dd>
+            <span>{{jobObjective.isActive}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.jobObjective.createTime">Create Time</span></dt>
+        <dd>
+            <span>{{jobObjective.createTime | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.jobObjective.updateTime">Update Time</span></dt>
+        <dd>
+            <span>{{jobObjective.updateTime | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'job-objective/'+ jobObjective.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

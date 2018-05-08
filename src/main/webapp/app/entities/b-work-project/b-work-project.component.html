@@ -1,0 +1,76 @@
+<div>
+    <h2>
+        <span jhiTranslate="resumeApp.bWorkProject.home.title">B Work Projects</span>
+        <button class="btn btn-primary float-right create-b-work-project" [routerLink]="['/', { outlets: { popup: ['b-work-project-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="resumeApp.bWorkProject.home.createLabel">
+            Create new B Work Project
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="bWorkProjects">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="resumeApp.bWorkProject.name">Name</span></th>
+            <th><span jhiTranslate="resumeApp.bWorkProject.responsible">Responsible</span></th>
+            <th><span jhiTranslate="resumeApp.bWorkProject.startTime">Start Time</span></th>
+            <th><span jhiTranslate="resumeApp.bWorkProject.endTime">End Time</span></th>
+            <th><span jhiTranslate="resumeApp.bWorkProject.extra">Extra</span></th>
+            <th><span jhiTranslate="resumeApp.bWorkProject.isActive">Is Active</span></th>
+            <th><span jhiTranslate="resumeApp.bWorkProject.createTime">Create Time</span></th>
+            <th><span jhiTranslate="resumeApp.bWorkProject.updateTime">Update Time</span></th>
+            <th><span jhiTranslate="resumeApp.bWorkProject.bWork">B Work</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let bWorkProject of bWorkProjects ;trackBy: trackId">
+                <td><a [routerLink]="['../b-work-project', bWorkProject.id ]">{{bWorkProject.id}}</a></td>
+                <td>{{bWorkProject.name}}</td>
+                <td>{{bWorkProject.responsible}}</td>
+                <td>{{bWorkProject.startTime}}</td>
+                <td>{{bWorkProject.endTime}}</td>
+                <td>{{bWorkProject.extra}}</td>
+                <td>{{bWorkProject.isActive}}</td>
+                <td>{{bWorkProject.createTime | date:'medium'}}</td>
+                <td>{{bWorkProject.updateTime | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="bWorkProject.bWork">
+                        <a [routerLink]="['../b-work', bWorkProject.bWork?.id ]" >{{bWorkProject.bWork?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../b-work-project', bWorkProject.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'b-work-project/'+ bWorkProject.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'b-work-project/'+ bWorkProject.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

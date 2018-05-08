@@ -1,0 +1,85 @@
+
+<div *ngIf="bInformation">
+    <h2><span jhiTranslate="resumeApp.bInformation.detail.title">B Information</span> {{bInformation.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="resumeApp.bInformation.username">Username</span></dt>
+        <dd>
+            <span>{{bInformation.username}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bInformation.name">Name</span></dt>
+        <dd>
+            <span>{{bInformation.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bInformation.sex">Sex</span></dt>
+        <dd>
+            <span>{{bInformation.sex}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bInformation.birthday">Birthday</span></dt>
+        <dd>
+            <span>{{bInformation.birthday}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bInformation.education">Education</span></dt>
+        <dd>
+            <span>{{bInformation.education}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bInformation.speciality">Speciality</span></dt>
+        <dd>
+            <span>{{bInformation.speciality}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bInformation.workTime">Work Time</span></dt>
+        <dd>
+            <span>{{bInformation.workTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bInformation.politicsStatus">Politics Status</span></dt>
+        <dd>
+            <span>{{bInformation.politicsStatus}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bInformation.marriage">Marriage</span></dt>
+        <dd>
+            <span>{{bInformation.marriage}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bInformation.skill">Skill</span></dt>
+        <dd>
+            <span>{{bInformation.skill}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bInformation.address">Address</span></dt>
+        <dd>
+            <span>{{bInformation.address}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bInformation.introduction">Introduction</span></dt>
+        <dd>
+            <span>{{bInformation.introduction}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bInformation.extra">Extra</span></dt>
+        <dd>
+            <span>{{bInformation.extra}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bInformation.isActive">Is Active</span></dt>
+        <dd>
+            <span>{{bInformation.isActive}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bInformation.createTime">Create Time</span></dt>
+        <dd>
+            <span>{{bInformation.createTime | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bInformation.updateTime">Update Time</span></dt>
+        <dd>
+            <span>{{bInformation.updateTime | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'b-information/'+ bInformation.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

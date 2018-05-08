@@ -1,0 +1,76 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myBWorkProjectLabel" jhiTranslate="resumeApp.bWorkProject.home.createOrEditLabel">Create or edit a B Work Project</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!bWorkProject.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="bWorkProject.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bWorkProject.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="bWorkProject.name"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bWorkProject.responsible" for="field_responsible">Responsible</label>
+            <input type="text" class="form-control" name="responsible" id="field_responsible"
+                [(ngModel)]="bWorkProject.responsible"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bWorkProject.startTime" for="field_startTime">Start Time</label>
+            <input type="text" class="form-control" name="startTime" id="field_startTime"
+                [(ngModel)]="bWorkProject.startTime"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bWorkProject.endTime" for="field_endTime">End Time</label>
+            <input type="text" class="form-control" name="endTime" id="field_endTime"
+                [(ngModel)]="bWorkProject.endTime"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bWorkProject.extra" for="field_extra">Extra</label>
+            <input type="text" class="form-control" name="extra" id="field_extra"
+                [(ngModel)]="bWorkProject.extra"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bWorkProject.isActive" for="field_isActive">Is Active</label>
+            <input type="checkbox" class="form-control" name="isActive" id="field_isActive"
+                [(ngModel)]="bWorkProject.isActive"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bWorkProject.createTime" for="field_createTime">Create Time</label>
+            <div class="d-flex">
+                <input id="field_createTime" type="datetime-local" class="form-control" name="createTime" [(ngModel)]="bWorkProject.createTime"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bWorkProject.updateTime" for="field_updateTime">Update Time</label>
+            <div class="d-flex">
+                <input id="field_updateTime" type="datetime-local" class="form-control" name="updateTime" [(ngModel)]="bWorkProject.updateTime"
+                  />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label jhiTranslate="resumeApp.bWorkProject.bWork" for="field_bWork">B Work</label>
+            <select class="form-control" id="field_bWork" name="bWork" [(ngModel)]="bWorkProject.bWork" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="bWorkOption.id === bWorkProject.bWork?.id ? bWorkProject.bWork : bWorkOption" *ngFor="let bWorkOption of bworks; trackBy: trackBWorkById">{{bWorkOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,26 @@
+{
+    "resumeApp": {
+        "bResume" : {
+            "home": {
+                "title": "B Resumes",
+                "createLabel": "Create a new B Resume",
+                "createOrEditLabel": "Create or edit a B Resume"
+            },
+            "created": "A new B Resume is created with identifier {{ param }}",
+            "updated": "A B Resume is updated with identifier {{ param }}",
+            "deleted": "A B Resume is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete B Resume {{ id }}?"
+            },
+            "detail": {
+                "title": "B Resume"
+            },
+            "url": "Url",
+            "status": "Status",
+            "extra": "Extra",
+            "isActive": "Is Active",
+            "createTime": "Create Time",
+            "updateTime": "Update Time"
+        }
+    }
+}

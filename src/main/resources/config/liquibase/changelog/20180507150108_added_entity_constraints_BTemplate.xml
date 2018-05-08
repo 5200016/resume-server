@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity BTemplate.
+    -->
+    <changeSet id="20180507150108-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="resume_id"
+                                 baseTableName="b_template"
+                                 constraintName="fk_btemplate_resume_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="b_resume"/>
+
+        <addForeignKeyConstraint baseColumnNames="btemplates_id"
+                                 baseTableName="btemplate_classify"
+                                 constraintName="fk_btemplate_classify_btemplates_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="b_template"/>
+        <addForeignKeyConstraint baseColumnNames="classifies_id"
+                                 baseTableName="btemplate_classify"
+                                 constraintName="fk_btemplate_classify_classifies_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="b_template_classify"/>
+        
+    </changeSet>
+</databaseChangeLog>

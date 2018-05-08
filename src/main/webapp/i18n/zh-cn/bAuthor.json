@@ -1,0 +1,32 @@
+{
+    "resumeApp": {
+        "bAuthor" : {
+            "home": {
+                "title": "B Authors",
+                "createLabel": "Create a new B Author",
+                "createOrEditLabel": "Create or edit a B Author"
+            },
+            "created": "A new B Author is created with identifier {{ param }}",
+            "updated": "A B Author is updated with identifier {{ param }}",
+            "deleted": "A B Author is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete B Author {{ id }}?"
+            },
+            "detail": {
+                "title": "B Author"
+            },
+            "username": "Username",
+            "likeCount": "Like Count",
+            "writeCount": "Write Count",
+            "introduction": "Introduction",
+            "qualifications": "Qualifications",
+            "protection": "Protection",
+            "phone": "Phone",
+            "responseTime": "Response Time",
+            "extra": "Extra",
+            "isActive": "Is Active",
+            "createTime": "Create Time",
+            "updateTime": "Update Time"
+        }
+    }
+}

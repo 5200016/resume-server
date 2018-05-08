@@ -1,0 +1,78 @@
+<div>
+    <h2>
+        <span jhiTranslate="resumeApp.bAuthor.home.title">B Authors</span>
+        <button class="btn btn-primary float-right create-b-author" [routerLink]="['/', { outlets: { popup: ['b-author-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="resumeApp.bAuthor.home.createLabel">
+            Create new B Author
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="bAuthors">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="resumeApp.bAuthor.username">Username</span></th>
+            <th><span jhiTranslate="resumeApp.bAuthor.likeCount">Like Count</span></th>
+            <th><span jhiTranslate="resumeApp.bAuthor.writeCount">Write Count</span></th>
+            <th><span jhiTranslate="resumeApp.bAuthor.introduction">Introduction</span></th>
+            <th><span jhiTranslate="resumeApp.bAuthor.qualifications">Qualifications</span></th>
+            <th><span jhiTranslate="resumeApp.bAuthor.protection">Protection</span></th>
+            <th><span jhiTranslate="resumeApp.bAuthor.phone">Phone</span></th>
+            <th><span jhiTranslate="resumeApp.bAuthor.responseTime">Response Time</span></th>
+            <th><span jhiTranslate="resumeApp.bAuthor.extra">Extra</span></th>
+            <th><span jhiTranslate="resumeApp.bAuthor.isActive">Is Active</span></th>
+            <th><span jhiTranslate="resumeApp.bAuthor.createTime">Create Time</span></th>
+            <th><span jhiTranslate="resumeApp.bAuthor.updateTime">Update Time</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let bAuthor of bAuthors ;trackBy: trackId">
+                <td><a [routerLink]="['../b-author', bAuthor.id ]">{{bAuthor.id}}</a></td>
+                <td>{{bAuthor.username}}</td>
+                <td>{{bAuthor.likeCount}}</td>
+                <td>{{bAuthor.writeCount}}</td>
+                <td>{{bAuthor.introduction}}</td>
+                <td>{{bAuthor.qualifications}}</td>
+                <td>{{bAuthor.protection}}</td>
+                <td>{{bAuthor.phone}}</td>
+                <td>{{bAuthor.responseTime}}</td>
+                <td>{{bAuthor.extra}}</td>
+                <td>{{bAuthor.isActive}}</td>
+                <td>{{bAuthor.createTime | date:'medium'}}</td>
+                <td>{{bAuthor.updateTime | date:'medium'}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../b-author', bAuthor.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'b-author/'+ bAuthor.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'b-author/'+ bAuthor.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

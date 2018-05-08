@@ -1,0 +1,31 @@
+{
+    "resumeApp": {
+        "jobObjective" : {
+            "home": {
+                "title": "Job Objectives",
+                "createLabel": "Create a new Job Objective",
+                "createOrEditLabel": "Create or edit a Job Objective"
+            },
+            "created": "A new Job Objective is created with identifier {{ param }}",
+            "updated": "A Job Objective is updated with identifier {{ param }}",
+            "deleted": "A Job Objective is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Job Objective {{ id }}?"
+            },
+            "detail": {
+                "title": "Job Objective"
+            },
+            "username": "Username",
+            "jobTitle": "Job Title",
+            "jobType": "Job Type",
+            "enterTime": "Enter Time",
+            "salaryStart": "Salary Start",
+            "salaryEnd": "Salary End",
+            "expectCity": "Expect City",
+            "extra": "Extra",
+            "isActive": "Is Active",
+            "createTime": "Create Time",
+            "updateTime": "Update Time"
+        }
+    }
+}

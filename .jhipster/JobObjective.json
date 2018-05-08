@@ -1,0 +1,55 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "username",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "jobTitle",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "jobType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "enterTime",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "salaryStart",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "salaryEnd",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "expectCity",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "extra",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isActive",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "createTime",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "updateTime",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20180507150116",
+    "entityTableName": "job_objective",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl"
+}

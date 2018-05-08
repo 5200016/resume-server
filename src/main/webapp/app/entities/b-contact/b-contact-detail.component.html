@@ -1,0 +1,57 @@
+
+<div *ngIf="bContact">
+    <h2><span jhiTranslate="resumeApp.bContact.detail.title">B Contact</span> {{bContact.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="resumeApp.bContact.username">Username</span></dt>
+        <dd>
+            <span>{{bContact.username}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bContact.phone">Phone</span></dt>
+        <dd>
+            <span>{{bContact.phone}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bContact.email">Email</span></dt>
+        <dd>
+            <span>{{bContact.email}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bContact.qq">Qq</span></dt>
+        <dd>
+            <span>{{bContact.qq}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bContact.wechat">Wechat</span></dt>
+        <dd>
+            <span>{{bContact.wechat}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bContact.extra">Extra</span></dt>
+        <dd>
+            <span>{{bContact.extra}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bContact.isActive">Is Active</span></dt>
+        <dd>
+            <span>{{bContact.isActive}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bContact.createTime">Create Time</span></dt>
+        <dd>
+            <span>{{bContact.createTime | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bContact.updateTime">Update Time</span></dt>
+        <dd>
+            <span>{{bContact.updateTime | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'b-contact/'+ bContact.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,86 @@
+<div>
+    <h2>
+        <span jhiTranslate="resumeApp.bInformation.home.title">B Informations</span>
+        <button class="btn btn-primary float-right create-b-information" [routerLink]="['/', { outlets: { popup: ['b-information-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="resumeApp.bInformation.home.createLabel">
+            Create new B Information
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="bInformations">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="resumeApp.bInformation.username">Username</span></th>
+            <th><span jhiTranslate="resumeApp.bInformation.name">Name</span></th>
+            <th><span jhiTranslate="resumeApp.bInformation.sex">Sex</span></th>
+            <th><span jhiTranslate="resumeApp.bInformation.birthday">Birthday</span></th>
+            <th><span jhiTranslate="resumeApp.bInformation.education">Education</span></th>
+            <th><span jhiTranslate="resumeApp.bInformation.speciality">Speciality</span></th>
+            <th><span jhiTranslate="resumeApp.bInformation.workTime">Work Time</span></th>
+            <th><span jhiTranslate="resumeApp.bInformation.politicsStatus">Politics Status</span></th>
+            <th><span jhiTranslate="resumeApp.bInformation.marriage">Marriage</span></th>
+            <th><span jhiTranslate="resumeApp.bInformation.skill">Skill</span></th>
+            <th><span jhiTranslate="resumeApp.bInformation.address">Address</span></th>
+            <th><span jhiTranslate="resumeApp.bInformation.introduction">Introduction</span></th>
+            <th><span jhiTranslate="resumeApp.bInformation.extra">Extra</span></th>
+            <th><span jhiTranslate="resumeApp.bInformation.isActive">Is Active</span></th>
+            <th><span jhiTranslate="resumeApp.bInformation.createTime">Create Time</span></th>
+            <th><span jhiTranslate="resumeApp.bInformation.updateTime">Update Time</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let bInformation of bInformations ;trackBy: trackId">
+                <td><a [routerLink]="['../b-information', bInformation.id ]">{{bInformation.id}}</a></td>
+                <td>{{bInformation.username}}</td>
+                <td>{{bInformation.name}}</td>
+                <td>{{bInformation.sex}}</td>
+                <td>{{bInformation.birthday}}</td>
+                <td>{{bInformation.education}}</td>
+                <td>{{bInformation.speciality}}</td>
+                <td>{{bInformation.workTime}}</td>
+                <td>{{bInformation.politicsStatus}}</td>
+                <td>{{bInformation.marriage}}</td>
+                <td>{{bInformation.skill}}</td>
+                <td>{{bInformation.address}}</td>
+                <td>{{bInformation.introduction}}</td>
+                <td>{{bInformation.extra}}</td>
+                <td>{{bInformation.isActive}}</td>
+                <td>{{bInformation.createTime | date:'medium'}}</td>
+                <td>{{bInformation.updateTime | date:'medium'}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../b-information', bInformation.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'b-information/'+ bInformation.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'b-information/'+ bInformation.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

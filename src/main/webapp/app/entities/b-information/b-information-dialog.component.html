@@ -1,0 +1,109 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myBInformationLabel" jhiTranslate="resumeApp.bInformation.home.createOrEditLabel">Create or edit a B Information</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!bInformation.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="bInformation.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bInformation.username" for="field_username">Username</label>
+            <input type="text" class="form-control" name="username" id="field_username"
+                [(ngModel)]="bInformation.username"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bInformation.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="bInformation.name"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bInformation.sex" for="field_sex">Sex</label>
+            <input type="text" class="form-control" name="sex" id="field_sex"
+                [(ngModel)]="bInformation.sex"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bInformation.birthday" for="field_birthday">Birthday</label>
+            <input type="text" class="form-control" name="birthday" id="field_birthday"
+                [(ngModel)]="bInformation.birthday"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bInformation.education" for="field_education">Education</label>
+            <input type="text" class="form-control" name="education" id="field_education"
+                [(ngModel)]="bInformation.education"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bInformation.speciality" for="field_speciality">Speciality</label>
+            <input type="text" class="form-control" name="speciality" id="field_speciality"
+                [(ngModel)]="bInformation.speciality"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bInformation.workTime" for="field_workTime">Work Time</label>
+            <input type="text" class="form-control" name="workTime" id="field_workTime"
+                [(ngModel)]="bInformation.workTime"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bInformation.politicsStatus" for="field_politicsStatus">Politics Status</label>
+            <input type="text" class="form-control" name="politicsStatus" id="field_politicsStatus"
+                [(ngModel)]="bInformation.politicsStatus"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bInformation.marriage" for="field_marriage">Marriage</label>
+            <input type="text" class="form-control" name="marriage" id="field_marriage"
+                [(ngModel)]="bInformation.marriage"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bInformation.skill" for="field_skill">Skill</label>
+            <textarea class="form-control" name="skill" id="field_skill"
+                [(ngModel)]="bInformation.skill"  ></textarea>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bInformation.address" for="field_address">Address</label>
+            <input type="text" class="form-control" name="address" id="field_address"
+                [(ngModel)]="bInformation.address"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bInformation.introduction" for="field_introduction">Introduction</label>
+            <textarea class="form-control" name="introduction" id="field_introduction"
+                [(ngModel)]="bInformation.introduction"  ></textarea>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bInformation.extra" for="field_extra">Extra</label>
+            <input type="text" class="form-control" name="extra" id="field_extra"
+                [(ngModel)]="bInformation.extra"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bInformation.isActive" for="field_isActive">Is Active</label>
+            <input type="checkbox" class="form-control" name="isActive" id="field_isActive"
+                [(ngModel)]="bInformation.isActive"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bInformation.createTime" for="field_createTime">Create Time</label>
+            <div class="d-flex">
+                <input id="field_createTime" type="datetime-local" class="form-control" name="createTime" [(ngModel)]="bInformation.createTime"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bInformation.updateTime" for="field_updateTime">Update Time</label>
+            <div class="d-flex">
+                <input id="field_updateTime" type="datetime-local" class="form-control" name="updateTime" [(ngModel)]="bInformation.updateTime"
+                  />
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

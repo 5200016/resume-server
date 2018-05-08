@@ -1,0 +1,59 @@
+
+<div *ngIf="bWorkProject">
+    <h2><span jhiTranslate="resumeApp.bWorkProject.detail.title">B Work Project</span> {{bWorkProject.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="resumeApp.bWorkProject.name">Name</span></dt>
+        <dd>
+            <span>{{bWorkProject.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bWorkProject.responsible">Responsible</span></dt>
+        <dd>
+            <span>{{bWorkProject.responsible}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bWorkProject.startTime">Start Time</span></dt>
+        <dd>
+            <span>{{bWorkProject.startTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bWorkProject.endTime">End Time</span></dt>
+        <dd>
+            <span>{{bWorkProject.endTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bWorkProject.extra">Extra</span></dt>
+        <dd>
+            <span>{{bWorkProject.extra}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bWorkProject.isActive">Is Active</span></dt>
+        <dd>
+            <span>{{bWorkProject.isActive}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bWorkProject.createTime">Create Time</span></dt>
+        <dd>
+            <span>{{bWorkProject.createTime | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bWorkProject.updateTime">Update Time</span></dt>
+        <dd>
+            <span>{{bWorkProject.updateTime | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bWorkProject.bWork">B Work</span></dt>
+        <dd>
+            <div *ngIf="bWorkProject.bWork">
+                <a [routerLink]="['/b-work', bWorkProject.bWork?.id]">{{bWorkProject.bWork?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'b-work-project/'+ bWorkProject.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

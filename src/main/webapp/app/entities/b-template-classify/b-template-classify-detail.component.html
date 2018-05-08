@@ -1,0 +1,45 @@
+
+<div *ngIf="bTemplateClassify">
+    <h2><span jhiTranslate="resumeApp.bTemplateClassify.detail.title">B Template Classify</span> {{bTemplateClassify.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="resumeApp.bTemplateClassify.name">Name</span></dt>
+        <dd>
+            <span>{{bTemplateClassify.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bTemplateClassify.type">Type</span></dt>
+        <dd>
+            <span>{{bTemplateClassify.type}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bTemplateClassify.extra">Extra</span></dt>
+        <dd>
+            <span>{{bTemplateClassify.extra}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bTemplateClassify.isActive">Is Active</span></dt>
+        <dd>
+            <span>{{bTemplateClassify.isActive}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bTemplateClassify.createTime">Create Time</span></dt>
+        <dd>
+            <span>{{bTemplateClassify.createTime | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bTemplateClassify.updateTime">Update Time</span></dt>
+        <dd>
+            <span>{{bTemplateClassify.updateTime | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'b-template-classify/'+ bTemplateClassify.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

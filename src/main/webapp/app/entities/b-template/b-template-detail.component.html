@@ -1,0 +1,69 @@
+
+<div *ngIf="bTemplate">
+    <h2><span jhiTranslate="resumeApp.bTemplate.detail.title">B Template</span> {{bTemplate.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="resumeApp.bTemplate.url">Url</span></dt>
+        <dd>
+            <span>{{bTemplate.url}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bTemplate.description">Description</span></dt>
+        <dd>
+            <span>{{bTemplate.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bTemplate.clickCount">Click Count</span></dt>
+        <dd>
+            <span>{{bTemplate.clickCount}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bTemplate.price">Price</span></dt>
+        <dd>
+            <span>{{bTemplate.price}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bTemplate.type">Type</span></dt>
+        <dd>
+            <span>{{bTemplate.type}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bTemplate.extra">Extra</span></dt>
+        <dd>
+            <span>{{bTemplate.extra}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bTemplate.isActive">Is Active</span></dt>
+        <dd>
+            <span>{{bTemplate.isActive}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bTemplate.createTime">Create Time</span></dt>
+        <dd>
+            <span>{{bTemplate.createTime | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bTemplate.updateTime">Update Time</span></dt>
+        <dd>
+            <span>{{bTemplate.updateTime | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bTemplate.resume">Resume</span></dt>
+        <dd>
+            <div *ngIf="bTemplate.resume">
+                <a [routerLink]="['/b-resume', bTemplate.resume?.id]">{{bTemplate.resume?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bTemplate.classify">Classify</span></dt>
+        <dd>
+            <span *ngFor="let classify of bTemplate.classifies; let last = last">
+                <a [routerLink]="['/b-template-classify', classify?.id ]">{{classify.id}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'b-template/'+ bTemplate.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

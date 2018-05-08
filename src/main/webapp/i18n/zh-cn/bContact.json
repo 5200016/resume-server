@@ -1,0 +1,29 @@
+{
+    "resumeApp": {
+        "bContact" : {
+            "home": {
+                "title": "B Contacts",
+                "createLabel": "Create a new B Contact",
+                "createOrEditLabel": "Create or edit a B Contact"
+            },
+            "created": "A new B Contact is created with identifier {{ param }}",
+            "updated": "A B Contact is updated with identifier {{ param }}",
+            "deleted": "A B Contact is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete B Contact {{ id }}?"
+            },
+            "detail": {
+                "title": "B Contact"
+            },
+            "username": "Username",
+            "phone": "Phone",
+            "email": "Email",
+            "qq": "Qq",
+            "wechat": "Wechat",
+            "extra": "Extra",
+            "isActive": "Is Active",
+            "createTime": "Create Time",
+            "updateTime": "Update Time"
+        }
+    }
+}

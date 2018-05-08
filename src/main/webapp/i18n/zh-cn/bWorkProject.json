@@ -1,0 +1,29 @@
+{
+    "resumeApp": {
+        "bWorkProject" : {
+            "home": {
+                "title": "B Work Projects",
+                "createLabel": "Create a new B Work Project",
+                "createOrEditLabel": "Create or edit a B Work Project"
+            },
+            "created": "A new B Work Project is created with identifier {{ param }}",
+            "updated": "A B Work Project is updated with identifier {{ param }}",
+            "deleted": "A B Work Project is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete B Work Project {{ id }}?"
+            },
+            "detail": {
+                "title": "B Work Project"
+            },
+            "name": "Name",
+            "responsible": "Responsible",
+            "startTime": "Start Time",
+            "endTime": "End Time",
+            "extra": "Extra",
+            "isActive": "Is Active",
+            "createTime": "Create Time",
+            "updateTime": "Update Time",
+            "bWork": "B Work"
+        }
+    }
+}

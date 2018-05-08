@@ -10,6 +10,17 @@
                 "sLogin": "S Login",
                 "sRole": "S Role",
                 "sUser": "S User",
+                "bAuthor": "B Author",
+                "bTemplate": "B Template",
+                "bResume": "B Resume",
+                "bInformation": "B Information",
+                "bContact": "B Contact",
+                "bWork": "B Work",
+                "bWorkProject": "B Work Project",
+                "bHonour": "B Honour",
+                "bHobby": "B Hobby",
+                "jobObjective": "Job Objective",
+                "bTemplateClassify": "B Template Classify",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

@@ -1,0 +1,87 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myBTemplateLabel" jhiTranslate="resumeApp.bTemplate.home.createOrEditLabel">Create or edit a B Template</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!bTemplate.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="bTemplate.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bTemplate.url" for="field_url">Url</label>
+            <input type="text" class="form-control" name="url" id="field_url"
+                [(ngModel)]="bTemplate.url"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bTemplate.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                [(ngModel)]="bTemplate.description"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bTemplate.clickCount" for="field_clickCount">Click Count</label>
+            <input type="number" class="form-control" name="clickCount" id="field_clickCount"
+                [(ngModel)]="bTemplate.clickCount"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bTemplate.price" for="field_price">Price</label>
+            <input type="text" class="form-control" name="price" id="field_price"
+                [(ngModel)]="bTemplate.price"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bTemplate.type" for="field_type">Type</label>
+            <input type="number" class="form-control" name="type" id="field_type"
+                [(ngModel)]="bTemplate.type"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bTemplate.extra" for="field_extra">Extra</label>
+            <input type="text" class="form-control" name="extra" id="field_extra"
+                [(ngModel)]="bTemplate.extra"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bTemplate.isActive" for="field_isActive">Is Active</label>
+            <input type="checkbox" class="form-control" name="isActive" id="field_isActive"
+                [(ngModel)]="bTemplate.isActive"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bTemplate.createTime" for="field_createTime">Create Time</label>
+            <div class="d-flex">
+                <input id="field_createTime" type="datetime-local" class="form-control" name="createTime" [(ngModel)]="bTemplate.createTime"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bTemplate.updateTime" for="field_updateTime">Update Time</label>
+            <div class="d-flex">
+                <input id="field_updateTime" type="datetime-local" class="form-control" name="updateTime" [(ngModel)]="bTemplate.updateTime"
+                  />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label jhiTranslate="resumeApp.bTemplate.resume" for="field_resume">Resume</label>
+            <select class="form-control" id="field_resume" name="resume" [(ngModel)]="bTemplate.resume">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="bResumeOption.id === bTemplate.resume?.id ? bTemplate.resume : bResumeOption" *ngFor="let bResumeOption of resumes; trackBy: trackBResumeById">{{bResumeOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label jhiTranslate="resumeApp.bTemplate.classify" for="field_classify">Classify</label>
+            <select class="form-control" id="field_classify" multiple name="classify" [(ngModel)]="bTemplate.classifies">
+                <option [ngValue]="getSelected(bTemplate.classifies, bTemplateClassifyOption)" *ngFor="let bTemplateClassifyOption of btemplateclassifies; trackBy: trackBTemplateClassifyById">{{bTemplateClassifyOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,77 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "username",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sex",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "birthday",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "education",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "speciality",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "workTime",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "politicsStatus",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "marriage",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "skill",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "address",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "introduction",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "extra",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isActive",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "createTime",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "updateTime",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20180507150110",
+    "entityTableName": "b_information",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl"
+}

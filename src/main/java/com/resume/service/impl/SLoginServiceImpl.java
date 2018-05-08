@@ -102,7 +102,6 @@ public class SLoginServiceImpl implements SLoginService{
         login.setCreateTime(DateUtil.getZoneDateTime());
         login.setUpdateTime(DateUtil.getZoneDateTime());
 
-
         //保存用户基本信息
         SUser userInfo = new SUser();
         userInfo.setNickname(login.getUsername());

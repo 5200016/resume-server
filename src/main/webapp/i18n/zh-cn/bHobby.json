@@ -1,0 +1,26 @@
+{
+    "resumeApp": {
+        "bHobby" : {
+            "home": {
+                "title": "B Hobbies",
+                "createLabel": "Create a new B Hobby",
+                "createOrEditLabel": "Create or edit a B Hobby"
+            },
+            "created": "A new B Hobby is created with identifier {{ param }}",
+            "updated": "A B Hobby is updated with identifier {{ param }}",
+            "deleted": "A B Hobby is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete B Hobby {{ id }}?"
+            },
+            "detail": {
+                "title": "B Hobby"
+            },
+            "username": "Username",
+            "description": "Description",
+            "extra": "Extra",
+            "isActive": "Is Active",
+            "createTime": "Create Time",
+            "updateTime": "Update Time"
+        }
+    }
+}

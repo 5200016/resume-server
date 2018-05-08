@@ -1,0 +1,72 @@
+<div>
+    <h2>
+        <span jhiTranslate="resumeApp.bContact.home.title">B Contacts</span>
+        <button class="btn btn-primary float-right create-b-contact" [routerLink]="['/', { outlets: { popup: ['b-contact-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="resumeApp.bContact.home.createLabel">
+            Create new B Contact
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="bContacts">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="resumeApp.bContact.username">Username</span></th>
+            <th><span jhiTranslate="resumeApp.bContact.phone">Phone</span></th>
+            <th><span jhiTranslate="resumeApp.bContact.email">Email</span></th>
+            <th><span jhiTranslate="resumeApp.bContact.qq">Qq</span></th>
+            <th><span jhiTranslate="resumeApp.bContact.wechat">Wechat</span></th>
+            <th><span jhiTranslate="resumeApp.bContact.extra">Extra</span></th>
+            <th><span jhiTranslate="resumeApp.bContact.isActive">Is Active</span></th>
+            <th><span jhiTranslate="resumeApp.bContact.createTime">Create Time</span></th>
+            <th><span jhiTranslate="resumeApp.bContact.updateTime">Update Time</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let bContact of bContacts ;trackBy: trackId">
+                <td><a [routerLink]="['../b-contact', bContact.id ]">{{bContact.id}}</a></td>
+                <td>{{bContact.username}}</td>
+                <td>{{bContact.phone}}</td>
+                <td>{{bContact.email}}</td>
+                <td>{{bContact.qq}}</td>
+                <td>{{bContact.wechat}}</td>
+                <td>{{bContact.extra}}</td>
+                <td>{{bContact.isActive}}</td>
+                <td>{{bContact.createTime | date:'medium'}}</td>
+                <td>{{bContact.updateTime | date:'medium'}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../b-contact', bContact.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'b-contact/'+ bContact.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'b-contact/'+ bContact.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
