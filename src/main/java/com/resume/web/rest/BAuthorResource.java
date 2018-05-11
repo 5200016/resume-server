@@ -20,7 +20,7 @@ import java.util.Optional;
  * REST controller for managing BAuthor.
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/ap")
 public class BAuthorResource {
 
     private final Logger log = LoggerFactory.getLogger(BAuthorResource.class);

@@ -20,7 +20,7 @@ import java.util.Optional;
  * REST controller for managing BResume.
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/ap")
 public class BResumeResource {
 
     private final Logger log = LoggerFactory.getLogger(BResumeResource.class);

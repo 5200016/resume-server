@@ -49,13 +49,13 @@ public class UploadUtils {
                 	String realName = TypeUtils.getPicName(st);
                     //临时存放图片路径
                 	StringBuffer tempurl=new StringBuffer();
-                	tempurl.append("/");
                 	//文件夹名称
                 	tempurl.append(fileName.trim());
                 	tempurl.append("/");
 
                 	//向配置的虚拟路径存入图片
                     String realPath = fictitiousUrl+tempurl.toString();
+                    System.out.println(realPath+realName);
                     //这里不必处理IO流关闭的问题，因为FileUtils.copyInputStreamToFile()方法内部会自动把用到的IO流关掉，我是看它的源码才知道的
                     FileUtils.copyInputStreamToFile(myfile.getInputStream(), new File(realPath, realName));
                     //将文件全名传递到前台

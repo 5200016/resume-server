@@ -3,8 +3,11 @@ package com.resume.service.impl;
 import com.resume.service.BTemplateService;
 import com.resume.domain.BTemplate;
 import com.resume.repository.BTemplateRepository;
+import com.resume.web.rest.util.TypeUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -71,5 +74,20 @@ public class BTemplateServiceImpl implements BTemplateService{
     public void delete(Long id) {
         log.debug("Request to delete BTemplate : {}", id);
         bTemplateRepository.delete(id);
+    }
+
+    /**
+     * 根据分类id查询相关模板（分页）
+     */
+    @Override
+    public Page<BTemplate> findTemplate(Long classifyId, String name, Integer pageNum, Integer pageSize) {
+        Integer classifyFlag = 0, nameFlag = 0;
+        if(!TypeUtils.isEmpty(classifyId)){
+            classifyFlag = 1;
+        }
+        if(!TypeUtils.isEmpty(name)){
+            nameFlag = 1;
+        }
+        return bTemplateRepository.findTemplateByClassify(classifyId,name,classifyFlag,nameFlag,new PageRequest(pageNum,pageSize));
     }
 }

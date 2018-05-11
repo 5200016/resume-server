@@ -5,6 +5,8 @@ import com.resume.domain.BAuthor;
 import com.resume.repository.BAuthorRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -71,5 +73,13 @@ public class BAuthorServiceImpl implements BAuthorService{
     public void delete(Long id) {
         log.debug("Request to delete BAuthor : {}", id);
         bAuthorRepository.delete(id);
+    }
+
+    /**
+     * 查询代写作者信息（并根据代写量，好评度排序  分页）
+     */
+    @Override
+    public Page<BAuthor> findAuthor(Integer pageNum, Integer pageSize) {
+        return bAuthorRepository.findAuthor(new PageRequest(pageNum,pageSize));
     }
 }

@@ -20,7 +20,7 @@ import java.util.Optional;
  * REST controller for managing BContact.
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/ap")
 public class BContactResource {
 
     private final Logger log = LoggerFactory.getLogger(BContactResource.class);

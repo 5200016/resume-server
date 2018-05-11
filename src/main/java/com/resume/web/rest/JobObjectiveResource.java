@@ -20,7 +20,7 @@ import java.util.Optional;
  * REST controller for managing JobObjective.
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/ap")
 public class JobObjectiveResource {
 
     private final Logger log = LoggerFactory.getLogger(JobObjectiveResource.class);

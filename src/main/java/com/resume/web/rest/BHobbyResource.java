@@ -20,7 +20,7 @@ import java.util.Optional;
  * REST controller for managing BHobby.
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/ap")
 public class BHobbyResource {
 
     private final Logger log = LoggerFactory.getLogger(BHobbyResource.class);

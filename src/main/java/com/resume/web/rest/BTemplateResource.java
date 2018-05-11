@@ -20,7 +20,7 @@ import java.util.Optional;
  * REST controller for managing BTemplate.
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/ap")
 public class BTemplateResource {
 
     private final Logger log = LoggerFactory.getLogger(BTemplateResource.class);

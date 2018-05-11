@@ -1,6 +1,8 @@
 package com.resume.service;
 
 import com.resume.domain.BAuthor;
+import org.springframework.data.domain.Page;
+
 import java.util.List;
 
 /**
@@ -37,4 +39,9 @@ public interface BAuthorService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+
+    /**
+     * 查询代写作者信息（并根据代写量，好评度排序  分页）
+     */
+    Page<BAuthor> findAuthor(Integer pageNum, Integer pageSize);
 }

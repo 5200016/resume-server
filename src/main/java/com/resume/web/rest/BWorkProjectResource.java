@@ -20,7 +20,7 @@ import java.util.Optional;
  * REST controller for managing BWorkProject.
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/ap")
 public class BWorkProjectResource {
 
     private final Logger log = LoggerFactory.getLogger(BWorkProjectResource.class);

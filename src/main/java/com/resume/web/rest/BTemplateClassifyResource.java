@@ -20,7 +20,7 @@ import java.util.Optional;
  * REST controller for managing BTemplateClassify.
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/ap")
 public class BTemplateClassifyResource {
 
     private final Logger log = LoggerFactory.getLogger(BTemplateClassifyResource.class);

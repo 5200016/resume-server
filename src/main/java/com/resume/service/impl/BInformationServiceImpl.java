@@ -5,6 +5,7 @@ import com.resume.repository.*;
 import com.resume.service.BInformationService;
 import com.resume.service.dto.InfoDTO;
 import com.resume.service.dto.WorkProjectDTO;
+import com.resume.web.rest.util.DateUtil;
 import com.resume.web.rest.util.TypeUtils;
 import com.resume.web.rest.vm.WorkProjectVM;
 import org.slf4j.Logger;
@@ -142,10 +143,16 @@ public class BInformationServiceImpl implements BInformationService{
     public void insertWorkExperience(List<WorkProjectVM> workProjects) {
         if(!TypeUtils.isEmpty(workProjects)){
             for(WorkProjectVM workProjectVM : workProjects){
+                workProjectVM.getWork().setIsActive(true);
+                workProjectVM.getWork().setCreateTime(DateUtil.getZoneDateTime());
+                workProjectVM.getWork().setUpdateTime(DateUtil.getZoneDateTime());
                 BWork work = workRepository.save(workProjectVM.getWork());
                 if(TypeUtils.isEmpty(workProjectVM.getWorkProjects())){
                     for(BWorkProject workProject : workProjectVM.getWorkProjects()){
                         workProject.setBWork(work);
+                        workProject.setIsActive(true);
+                        workProject.setCreateTime(DateUtil.getZoneDateTime());
+                        workProject.setUpdateTime(DateUtil.getZoneDateTime());
                         workProjectRepository.save(workProject);
                     }
                 }

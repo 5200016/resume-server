@@ -1,6 +1,8 @@
 package com.resume.service;
 
 import com.resume.domain.BTemplate;
+import org.springframework.data.domain.Page;
+
 import java.util.List;
 
 /**
@@ -37,4 +39,9 @@ public interface BTemplateService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+
+    /**
+     * 根据分类id查询相关模板（分页）
+     */
+    Page<BTemplate> findTemplate(Long classifyId, String name, Integer pageNum, Integer pageSize);
 }

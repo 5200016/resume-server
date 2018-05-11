@@ -1,4 +1,4 @@
-package com.resume.web.rest;
+package com.resume.web.rest.controller;
 
 import com.codahale.metrics.annotation.Timed;
 import com.resume.domain.SLogin;

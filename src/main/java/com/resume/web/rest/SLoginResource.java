@@ -20,7 +20,7 @@ import java.util.Optional;
  * REST controller for managing SLogin.
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/ap")
 public class SLoginResource {
 
     private final Logger log = LoggerFactory.getLogger(SLoginResource.class);

@@ -20,7 +20,7 @@ import java.util.Optional;
  * REST controller for managing SRole.
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/ap")
 public class SRoleResource {
 
     private final Logger log = LoggerFactory.getLogger(SRoleResource.class);

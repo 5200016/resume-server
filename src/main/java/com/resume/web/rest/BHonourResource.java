@@ -20,7 +20,7 @@ import java.util.Optional;
  * REST controller for managing BHonour.
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/ap")
 public class BHonourResource {
 
     private final Logger log = LoggerFactory.getLogger(BHonourResource.class);

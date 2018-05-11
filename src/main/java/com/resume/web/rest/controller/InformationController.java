@@ -1,8 +1,9 @@
-package com.resume.web.rest;
+package com.resume.web.rest.controller;
 
 import com.codahale.metrics.annotation.Timed;
 import com.resume.domain.*;
 import com.resume.service.*;
+import com.resume.web.rest.util.DateUtil;
 import com.resume.web.rest.util.ResultObj;
 import com.resume.web.rest.vm.WorkProjectVM;
 import io.swagger.annotations.Api;
@@ -60,6 +61,9 @@ public class InformationController {
     @PostMapping("/insert/information")
     @Timed
     public ResultObj insertInformation(@ApiParam(name="information",value="用户详细信息实体",required=true) @RequestBody BInformation information) throws URISyntaxException {
+        information.setIsActive(true);
+        information.setUpdateTime(DateUtil.getZoneDateTime());
+        information.setCreateTime(DateUtil.getZoneDateTime());
         return ResultObj.back(true,200,informationService.save(information));
     }
 
@@ -71,6 +75,9 @@ public class InformationController {
     @PostMapping("/insert/contact")
     @Timed
     public ResultObj insertContact(@ApiParam(name="contact",value="用户联系方式实体",required=true) @RequestBody BContact contact) throws URISyntaxException {
+        contact.setIsActive(true);
+        contact.setUpdateTime(DateUtil.getZoneDateTime());
+        contact.setCreateTime(DateUtil.getZoneDateTime());
         return ResultObj.back(true,200,contactService.save(contact));
     }
 
@@ -82,6 +89,9 @@ public class InformationController {
     @PostMapping("/insert/honour")
     @Timed
     public ResultObj insertHonour(@ApiParam(name="honour",value="用户荣誉奖项实体",required=true) @RequestBody BHonour honour) throws URISyntaxException {
+        honour.setIsActive(true);
+        honour.setUpdateTime(DateUtil.getZoneDateTime());
+        honour.setCreateTime(DateUtil.getZoneDateTime());
         return ResultObj.back(true,200,honourService.save(honour));
     }
 
@@ -93,6 +103,9 @@ public class InformationController {
     @PostMapping("/insert/hobby")
     @Timed
     public ResultObj insertHobby(@ApiParam(name="hobby",value="用户兴趣特长实体",required=true) @RequestBody BHobby hobby) throws URISyntaxException {
+        hobby.setIsActive(true);
+        hobby.setUpdateTime(DateUtil.getZoneDateTime());
+        hobby.setCreateTime(DateUtil.getZoneDateTime());
         return ResultObj.back(true,200,hobbyService.save(hobby));
     }
 
@@ -104,6 +117,9 @@ public class InformationController {
     @PostMapping("/insert/jobObjective")
     @Timed
     public ResultObj insertJobObjective(@ApiParam(name="jobObjective",value="用户求职意向实体",required=true) @RequestBody JobObjective jobObjective) throws URISyntaxException {
+        jobObjective.setIsActive(true);
+        jobObjective.setUpdateTime(DateUtil.getZoneDateTime());
+        jobObjective.setCreateTime(DateUtil.getZoneDateTime());
         return ResultObj.back(true,200,jobObjectiveService.save(jobObjective));
     }
 

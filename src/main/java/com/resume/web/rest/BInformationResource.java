@@ -20,7 +20,7 @@ import java.util.Optional;
  * REST controller for managing BInformation.
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/ap")
 public class BInformationResource {
 
     private final Logger log = LoggerFactory.getLogger(BInformationResource.class);

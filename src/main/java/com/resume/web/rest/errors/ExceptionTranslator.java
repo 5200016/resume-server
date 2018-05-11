@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * Controller advice to translate the server side exceptions to client-friendly json structures.
  */
-@ControllerAdvice
+/*@ControllerAdvice*/
 public class ExceptionTranslator {
 
     private final Logger log = LoggerFactory.getLogger(ExceptionTranslator.class);
