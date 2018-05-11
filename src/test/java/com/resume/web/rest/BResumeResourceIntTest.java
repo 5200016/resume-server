@@ -43,6 +43,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = ResumeApp.class)
 public class BResumeResourceIntTest {
 
+    private static final String DEFAULT_USERNAME = "AAAAAAAAAA";
+    private static final String UPDATED_USERNAME = "BBBBBBBBBB";
+
     private static final String DEFAULT_URL = "AAAAAAAAAA";
     private static final String UPDATED_URL = "BBBBBBBBBB";
 
@@ -101,6 +104,7 @@ public class BResumeResourceIntTest {
      */
     public static BResume createEntity(EntityManager em) {
         BResume bResume = new BResume()
+            .username(DEFAULT_USERNAME)
             .url(DEFAULT_URL)
             .status(DEFAULT_STATUS)
             .extra(DEFAULT_EXTRA)
@@ -130,6 +134,7 @@ public class BResumeResourceIntTest {
         List<BResume> bResumeList = bResumeRepository.findAll();
         assertThat(bResumeList).hasSize(databaseSizeBeforeCreate + 1);
         BResume testBResume = bResumeList.get(bResumeList.size() - 1);
+        assertThat(testBResume.getUsername()).isEqualTo(DEFAULT_USERNAME);
         assertThat(testBResume.getUrl()).isEqualTo(DEFAULT_URL);
         assertThat(testBResume.getStatus()).isEqualTo(DEFAULT_STATUS);
         assertThat(testBResume.getExtra()).isEqualTo(DEFAULT_EXTRA);
@@ -168,6 +173,7 @@ public class BResumeResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(bResume.getId().intValue())))
+            .andExpect(jsonPath("$.[*].username").value(hasItem(DEFAULT_USERNAME.toString())))
             .andExpect(jsonPath("$.[*].url").value(hasItem(DEFAULT_URL.toString())))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS)))
             .andExpect(jsonPath("$.[*].extra").value(hasItem(DEFAULT_EXTRA.toString())))
@@ -187,6 +193,7 @@ public class BResumeResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(bResume.getId().intValue()))
+            .andExpect(jsonPath("$.username").value(DEFAULT_USERNAME.toString()))
             .andExpect(jsonPath("$.url").value(DEFAULT_URL.toString()))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS))
             .andExpect(jsonPath("$.extra").value(DEFAULT_EXTRA.toString()))
@@ -214,6 +221,7 @@ public class BResumeResourceIntTest {
         // Update the bResume
         BResume updatedBResume = bResumeRepository.findOne(bResume.getId());
         updatedBResume
+            .username(UPDATED_USERNAME)
             .url(UPDATED_URL)
             .status(UPDATED_STATUS)
             .extra(UPDATED_EXTRA)
@@ -230,6 +238,7 @@ public class BResumeResourceIntTest {
         List<BResume> bResumeList = bResumeRepository.findAll();
         assertThat(bResumeList).hasSize(databaseSizeBeforeUpdate);
         BResume testBResume = bResumeList.get(bResumeList.size() - 1);
+        assertThat(testBResume.getUsername()).isEqualTo(UPDATED_USERNAME);
         assertThat(testBResume.getUrl()).isEqualTo(UPDATED_URL);
         assertThat(testBResume.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testBResume.getExtra()).isEqualTo(UPDATED_EXTRA);

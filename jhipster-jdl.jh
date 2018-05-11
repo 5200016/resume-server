@@ -62,6 +62,7 @@ entity BTemplateClassify {
 }
 
 entity BResume {
+     Username String,
      Url String ,
      Status Integer,
      Extra String,

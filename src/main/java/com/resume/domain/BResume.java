@@ -19,6 +19,9 @@ public class BResume implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "username")
+    private String username;
+
     @Column(name = "url")
     private String url;
 
@@ -43,6 +46,19 @@ public class BResume implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public BResume username(String username) {
+        this.username = username;
+        return this;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getUrl() {
@@ -147,6 +163,7 @@ public class BResume implements Serializable {
     public String toString() {
         return "BResume{" +
             "id=" + getId() +
+            ", username='" + getUsername() + "'" +
             ", url='" + getUrl() + "'" +
             ", status='" + getStatus() + "'" +
             ", extra='" + getExtra() + "'" +

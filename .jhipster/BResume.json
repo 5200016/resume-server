@@ -3,6 +3,10 @@
     "relationships": [],
     "fields": [
         {
+            "fieldName": "username",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "url",
             "fieldType": "String"
         },

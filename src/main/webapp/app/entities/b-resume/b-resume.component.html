@@ -17,6 +17,7 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="resumeApp.bResume.username">Username</span></th>
             <th><span jhiTranslate="resumeApp.bResume.url">Url</span></th>
             <th><span jhiTranslate="resumeApp.bResume.status">Status</span></th>
             <th><span jhiTranslate="resumeApp.bResume.extra">Extra</span></th>
@@ -29,6 +30,7 @@
             <tbody>
             <tr *ngFor="let bResume of bResumes ;trackBy: trackId">
                 <td><a [routerLink]="['../b-resume', bResume.id ]">{{bResume.id}}</a></td>
+                <td>{{bResume.username}}</td>
                 <td>{{bResume.url}}</td>
                 <td>{{bResume.status}}</td>
                 <td>{{bResume.extra}}</td>

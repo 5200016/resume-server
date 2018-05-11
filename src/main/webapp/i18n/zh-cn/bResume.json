@@ -15,6 +15,7 @@
             "detail": {
                 "title": "B Resume"
             },
+            "username": "Username",
             "url": "Url",
             "status": "Status",
             "extra": "Extra",

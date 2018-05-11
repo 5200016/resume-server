@@ -13,6 +13,11 @@
                    [(ngModel)]="bResume.id" readonly />
         </div>
         <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bResume.username" for="field_username">Username</label>
+            <input type="text" class="form-control" name="username" id="field_username"
+                [(ngModel)]="bResume.username"  />
+        </div>
+        <div class="form-group">
             <label class="form-control-label" jhiTranslate="resumeApp.bResume.url" for="field_url">Url</label>
             <input type="text" class="form-control" name="url" id="field_url"
                 [(ngModel)]="bResume.url"  />
