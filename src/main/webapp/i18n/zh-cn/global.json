@@ -21,6 +21,8 @@
                 "bHobby": "B Hobby",
                 "jobObjective": "Job Objective",
                 "bTemplateClassify": "B Template Classify",
+                "bEducation": "B Education",
+                "bSelf": "B Self",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

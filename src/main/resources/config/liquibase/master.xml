@@ -19,9 +19,10 @@
     <include file="classpath:config/liquibase/changelog/20180507150115_added_entity_BHobby.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20180507150116_added_entity_JobObjective.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20180508090203_added_entity_BTemplateClassify.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20180527091929_added_entity_BEducation.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20180527093713_added_entity_BSelf.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="classpath:config/liquibase/changelog/20180410075729_added_entity_constraints_SLogin.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20180507150108_added_entity_constraints_BTemplate.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20180507150113_added_entity_constraints_BWorkProject.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

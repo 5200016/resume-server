@@ -13,6 +13,16 @@
                    [(ngModel)]="bWorkProject.id" readonly />
         </div>
         <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bWorkProject.username" for="field_username">Username</label>
+            <input type="text" class="form-control" name="username" id="field_username"
+                [(ngModel)]="bWorkProject.username"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bWorkProject.description" for="field_description">Description</label>
+            <textarea class="form-control" name="description" id="field_description"
+                [(ngModel)]="bWorkProject.description"  ></textarea>
+        </div>
+        <div class="form-group">
             <label class="form-control-label" jhiTranslate="resumeApp.bWorkProject.name" for="field_name">Name</label>
             <input type="text" class="form-control" name="name" id="field_name"
                 [(ngModel)]="bWorkProject.name"  />
@@ -57,13 +67,6 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <label jhiTranslate="resumeApp.bWorkProject.bWork" for="field_bWork">B Work</label>
-            <select class="form-control" id="field_bWork" name="bWork" [(ngModel)]="bWorkProject.bWork" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="bWorkOption.id === bWorkProject.bWork?.id ? bWorkProject.bWork : bWorkOption" *ngFor="let bWorkOption of bworks; trackBy: trackBWorkById">{{bWorkOption.id}}</option>
-            </select>
-        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">

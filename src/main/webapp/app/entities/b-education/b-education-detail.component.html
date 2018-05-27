@@ -1,0 +1,61 @@
+
+<div *ngIf="bEducation">
+    <h2><span jhiTranslate="resumeApp.bEducation.detail.title">B Education</span> {{bEducation.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="resumeApp.bEducation.username">Username</span></dt>
+        <dd>
+            <span>{{bEducation.username}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bEducation.enterTime">Enter Time</span></dt>
+        <dd>
+            <span>{{bEducation.enterTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bEducation.stopTime">Stop Time</span></dt>
+        <dd>
+            <span>{{bEducation.stopTime}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bEducation.school">School</span></dt>
+        <dd>
+            <span>{{bEducation.school}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bEducation.speciality">Speciality</span></dt>
+        <dd>
+            <span>{{bEducation.speciality}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bEducation.description">Description</span></dt>
+        <dd>
+            <span>{{bEducation.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bEducation.extra">Extra</span></dt>
+        <dd>
+            <span>{{bEducation.extra}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bEducation.isActive">Is Active</span></dt>
+        <dd>
+            <span>{{bEducation.isActive}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bEducation.createTime">Create Time</span></dt>
+        <dd>
+            <span>{{bEducation.createTime | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bEducation.updateTime">Update Time</span></dt>
+        <dd>
+            <span>{{bEducation.updateTime | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'b-education/'+ bEducation.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

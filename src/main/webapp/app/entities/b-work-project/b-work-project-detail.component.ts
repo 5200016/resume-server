@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
-import { JhiEventManager  } from 'ng-jhipster';
+import { JhiEventManager , JhiDataUtils } from 'ng-jhipster';
 
 import { BWorkProject } from './b-work-project.model';
 import { BWorkProjectService } from './b-work-project.service';
@@ -18,6 +18,7 @@ export class BWorkProjectDetailComponent implements OnInit, OnDestroy {
 
     constructor(
         private eventManager: JhiEventManager,
+        private dataUtils: JhiDataUtils,
         private bWorkProjectService: BWorkProjectService,
         private route: ActivatedRoute
     ) {
@@ -34,6 +35,13 @@ export class BWorkProjectDetailComponent implements OnInit, OnDestroy {
         this.bWorkProjectService.find(id).subscribe((bWorkProject) => {
             this.bWorkProject = bWorkProject;
         });
+    }
+    byteSize(field) {
+        return this.dataUtils.byteSize(field);
+    }
+
+    openFile(contentType, field) {
+        return this.dataUtils.openFile(contentType, field);
     }
     previousState() {
         window.history.back();

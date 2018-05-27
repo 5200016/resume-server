@@ -24,8 +24,7 @@
             "extra": "Extra",
             "isActive": "Is Active",
             "createTime": "Create Time",
-            "updateTime": "Update Time",
-            "workProject": "Work Project"
+            "updateTime": "Update Time"
         }
     }
 }

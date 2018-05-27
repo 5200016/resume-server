@@ -3,6 +3,8 @@ import { BaseEntity } from './../../shared';
 export class BWorkProject implements BaseEntity {
     constructor(
         public id?: number,
+        public username?: string,
+        public description?: any,
         public name?: string,
         public responsible?: string,
         public startTime?: string,
@@ -11,7 +13,6 @@ export class BWorkProject implements BaseEntity {
         public isActive?: boolean,
         public createTime?: any,
         public updateTime?: any,
-        public bWork?: BaseEntity,
     ) {
         this.isActive = false;
     }

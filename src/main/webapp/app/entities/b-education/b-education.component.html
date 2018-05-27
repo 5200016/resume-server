@@ -1,0 +1,74 @@
+<div>
+    <h2>
+        <span jhiTranslate="resumeApp.bEducation.home.title">B Educations</span>
+        <button class="btn btn-primary float-right create-b-education" [routerLink]="['/', { outlets: { popup: ['b-education-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="resumeApp.bEducation.home.createLabel">
+            Create new B Education
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="bEducations">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="resumeApp.bEducation.username">Username</span></th>
+            <th><span jhiTranslate="resumeApp.bEducation.enterTime">Enter Time</span></th>
+            <th><span jhiTranslate="resumeApp.bEducation.stopTime">Stop Time</span></th>
+            <th><span jhiTranslate="resumeApp.bEducation.school">School</span></th>
+            <th><span jhiTranslate="resumeApp.bEducation.speciality">Speciality</span></th>
+            <th><span jhiTranslate="resumeApp.bEducation.description">Description</span></th>
+            <th><span jhiTranslate="resumeApp.bEducation.extra">Extra</span></th>
+            <th><span jhiTranslate="resumeApp.bEducation.isActive">Is Active</span></th>
+            <th><span jhiTranslate="resumeApp.bEducation.createTime">Create Time</span></th>
+            <th><span jhiTranslate="resumeApp.bEducation.updateTime">Update Time</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let bEducation of bEducations ;trackBy: trackId">
+                <td><a [routerLink]="['../b-education', bEducation.id ]">{{bEducation.id}}</a></td>
+                <td>{{bEducation.username}}</td>
+                <td>{{bEducation.enterTime}}</td>
+                <td>{{bEducation.stopTime}}</td>
+                <td>{{bEducation.school}}</td>
+                <td>{{bEducation.speciality}}</td>
+                <td>{{bEducation.description}}</td>
+                <td>{{bEducation.extra}}</td>
+                <td>{{bEducation.isActive}}</td>
+                <td>{{bEducation.createTime | date:'medium'}}</td>
+                <td>{{bEducation.updateTime | date:'medium'}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../b-education', bEducation.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'b-education/'+ bEducation.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'b-education/'+ bEducation.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

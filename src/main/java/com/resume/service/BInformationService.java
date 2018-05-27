@@ -1,6 +1,6 @@
 package com.resume.service;
 
-import com.resume.domain.BInformation;
+import com.resume.domain.*;
 import com.resume.service.dto.InfoDTO;
 import com.resume.web.rest.vm.WorkProjectVM;
 
@@ -50,4 +50,50 @@ public interface BInformationService {
      * 新增用户工作经历
      */
     void insertWorkExperience(List<WorkProjectVM> workProjects);
+
+    /**
+     * 通过用户账号查询详细信息
+     */
+    BInformation findInformationByUsername(String username);
+
+    /**
+     * 通过用户账号查询联系方式
+     */
+    BContact findContactByUsername(String username);
+
+    /**
+     * 通过用户账号查询教育背景
+     */
+    BEducation findEducationByUsername(String username);
+
+    /**
+     * 通过用户账号查询工作经验
+     */
+    List<BWork> findWorkByUsername(String username);
+
+    /**
+     * 通过用户账号查询项目经验
+     */
+    List<BWorkProject> findWorkProjectByUsername(String username);
+
+    /**
+     * 通过用户账号查询自我评价
+     */
+    BSelf findSelfByUsername(String username);
+
+    /**
+     * 通过用户账号查询兴趣爱好
+     */
+    BHobby findHobbyByUsername(String username);
+
+    /**
+     * 通过用户账号查询荣誉奖项
+     */
+    BHonour findHonourByUsername(String username);
+
+    /**
+     * 通过用户账号查询求职意向
+     */
+    JobObjective findJobObjectiveByUsername(String username);
+
 }

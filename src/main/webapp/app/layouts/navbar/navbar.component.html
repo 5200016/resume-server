@@ -112,6 +112,18 @@
                             <span jhiTranslate="global.menu.entities.bTemplateClassify">B Template Classify</span>
                         </a>
                     </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="b-education" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                            <span jhiTranslate="global.menu.entities.bEducation">B Education</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="b-self" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                            <span jhiTranslate="global.menu.entities.bSelf">B Self</span>
+                        </a>
+                    </li>
                     <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
                 </ul>
             </li>

@@ -1,0 +1,66 @@
+<div>
+    <h2>
+        <span jhiTranslate="resumeApp.bSelf.home.title">B Selves</span>
+        <button class="btn btn-primary float-right create-b-self" [routerLink]="['/', { outlets: { popup: ['b-self-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="resumeApp.bSelf.home.createLabel">
+            Create new B Self
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="bSelves">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="resumeApp.bSelf.username">Username</span></th>
+            <th><span jhiTranslate="resumeApp.bSelf.description">Description</span></th>
+            <th><span jhiTranslate="resumeApp.bSelf.extra">Extra</span></th>
+            <th><span jhiTranslate="resumeApp.bSelf.isActive">Is Active</span></th>
+            <th><span jhiTranslate="resumeApp.bSelf.createTime">Create Time</span></th>
+            <th><span jhiTranslate="resumeApp.bSelf.updateTime">Update Time</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let bSelf of bSelves ;trackBy: trackId">
+                <td><a [routerLink]="['../b-self', bSelf.id ]">{{bSelf.id}}</a></td>
+                <td>{{bSelf.username}}</td>
+                <td>{{bSelf.description}}</td>
+                <td>{{bSelf.extra}}</td>
+                <td>{{bSelf.isActive}}</td>
+                <td>{{bSelf.createTime | date:'medium'}}</td>
+                <td>{{bSelf.updateTime | date:'medium'}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../b-self', bSelf.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'b-self/'+ bSelf.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'b-self/'+ bSelf.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

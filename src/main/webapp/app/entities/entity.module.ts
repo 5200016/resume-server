@@ -14,6 +14,8 @@ import { ResumeBHonourModule } from './b-honour/b-honour.module';
 import { ResumeBHobbyModule } from './b-hobby/b-hobby.module';
 import { ResumeJobObjectiveModule } from './job-objective/job-objective.module';
 import { ResumeBTemplateClassifyModule } from './b-template-classify/b-template-classify.module';
+import { ResumeBEducationModule } from './b-education/b-education.module';
+import { ResumeBSelfModule } from './b-self/b-self.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -32,6 +34,8 @@ import { ResumeBTemplateClassifyModule } from './b-template-classify/b-template-
         ResumeBHobbyModule,
         ResumeJobObjectiveModule,
         ResumeBTemplateClassifyModule,
+        ResumeBEducationModule,
+        ResumeBSelfModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

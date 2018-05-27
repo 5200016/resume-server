@@ -116,6 +116,8 @@ entity BWork {
 }
 
 entity BWorkProject {
+     Username String,
+     Description TextBlob,
      Name String,
      Responsible String,
      StartTime String,
@@ -158,9 +160,28 @@ entity JobObjective {
      UpdateTime ZonedDateTime
 }
 
-relationship OneToMany {
-     BWork{workProject} to BWorkProject
+entity BEducation {
+     Username String,
+     enterTime String,
+     StopTime String,
+     School String,
+     Speciality String,
+     Description TextBlob,
+     Extra String,
+     IsActive Boolean,
+     CreateTime ZonedDateTime,
+     UpdateTime ZonedDateTime
 }
+
+entity BSelf {
+     Username String,
+     Description TextBlob,
+     Extra String,
+     IsActive Boolean,
+     CreateTime ZonedDateTime,
+     UpdateTime ZonedDateTime
+}
+
 
 relationship OneToOne {
      BTemplate{resume} to BResume

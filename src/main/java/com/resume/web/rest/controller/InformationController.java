@@ -5,14 +5,13 @@ import com.resume.domain.*;
 import com.resume.service.*;
 import com.resume.web.rest.util.DateUtil;
 import com.resume.web.rest.util.ResultObj;
-import com.resume.web.rest.vm.WorkProjectVM;
+import com.resume.web.rest.util.TypeUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URISyntaxException;
-import java.util.List;
 
 /**
  * User : 黄志成
@@ -31,8 +30,10 @@ public class InformationController {
     private final BHonourService honourService;
     private final BHobbyService hobbyService;
     private final JobObjectiveService jobObjectiveService;
+    private final BEducationService educationService;
+    private final BSelfService selfService;
 
-    public InformationController(BInformationService informationService, BContactService contactService, BWorkProjectService workProjectService, BWorkService workService, BHonourService honourService, BHobbyService hobbyService, JobObjectiveService jobObjectiveService) {
+    public InformationController(BInformationService informationService, BContactService contactService, BWorkProjectService workProjectService, BWorkService workService, BHonourService honourService, BHobbyService hobbyService, JobObjectiveService jobObjectiveService, BEducationService educationService, BSelfService selfService) {
         this.informationService = informationService;
         this.contactService = contactService;
         this.workProjectService = workProjectService;
@@ -40,17 +41,8 @@ public class InformationController {
         this.honourService = honourService;
         this.hobbyService = hobbyService;
         this.jobObjectiveService = jobObjectiveService;
-    }
-
-    /**
-     * 通过用户名查询用户详细信息
-     * @throws URISyntaxException
-     */
-    @ApiOperation("通过用户名查询用户详细信息 RequestParam")
-    @PostMapping("/select/information")
-    @Timed
-    public ResultObj selectInformationByUsername(@ApiParam(name="username",value="用户名",required=true) @RequestParam String username) throws URISyntaxException {
-        return ResultObj.back(true,200,informationService.findUserInformation(username));
+        this.educationService = educationService;
+        this.selfService = selfService;
     }
 
     /**
@@ -69,6 +61,22 @@ public class InformationController {
     }
 
     /**
+     * 修改用户详细信息
+     * @throws URISyntaxException
+     */
+    @ApiOperation("修改用户详细信息 RequestBody")
+    @PutMapping("/update/information")
+    @Timed
+    public ResultObj updateInformation(@ApiParam(name="information",value="用户详细信息实体",required=true) @RequestBody BInformation information)
+        throws URISyntaxException {
+        if(TypeUtils.isEmpty(information.getId())){
+            return ResultObj.backInfo(true,200,"修改失败",null);
+        }
+        information.setUpdateTime(DateUtil.getZoneDateTime());
+        return ResultObj.back(true,200,informationService.save(information));
+    }
+
+    /**
      * 新增用户联系方式
      * @throws URISyntaxException
      */
@@ -80,6 +88,22 @@ public class InformationController {
         contact.setIsActive(true);
         contact.setUpdateTime(DateUtil.getZoneDateTime());
         contact.setCreateTime(DateUtil.getZoneDateTime());
+        return ResultObj.back(true,200,contactService.save(contact));
+    }
+
+    /**
+     * 修改用户联系方式
+     * @throws URISyntaxException
+     */
+    @ApiOperation("修改用户联系方式 RequestBody")
+    @PutMapping("/update/contact")
+    @Timed
+    public ResultObj updateContact(@ApiParam(name="contact",value="用户联系方式实体",required=true) @RequestBody BContact contact)
+        throws URISyntaxException {
+        if(TypeUtils.isEmpty(contact.getId())){
+            return ResultObj.backInfo(true,200,"修改失败",null);
+        }
+        contact.setUpdateTime(DateUtil.getZoneDateTime());
         return ResultObj.back(true,200,contactService.save(contact));
     }
 
@@ -129,15 +153,153 @@ public class InformationController {
     }
 
     /**
-     * 新增用户工作经历
+     * 新增用户工作经验
      * @throws URISyntaxException
      */
-    @ApiOperation("新增用户工作经历 RequestBody")
+    @ApiOperation("新增用户工作经验 RequestBody")
     @PostMapping("/insert/work")
     @Timed
-    public ResultObj insertWork(@ApiParam(name="workProjectVM",value="用户工作经历实体",required=true) @RequestBody List<WorkProjectVM> workProjectVM)
+    public ResultObj insertWork(@ApiParam(name="work",value="用户工作经验实体",required=true) @RequestBody BWork work)
         throws URISyntaxException {
-        informationService.insertWorkExperience(workProjectVM);
-        return ResultObj.back(true,200,true);
+        work.setIsActive(true);
+        work.setCreateTime(DateUtil.getZoneDateTime());
+        work.setUpdateTime(DateUtil.getZoneDateTime());
+        return ResultObj.back(true,200,workService.save(work));
+    }
+
+    /**
+     * 新增用户项目经验
+     * @throws URISyntaxException
+     */
+    @ApiOperation("新增用户项目经验 RequestBody")
+    @PostMapping("/insert/workProject")
+    @Timed
+    public ResultObj insertWorkProject(@ApiParam(name="workProject",value="用户项目经验实体",required=true) @RequestBody BWorkProject workProject)
+        throws URISyntaxException {
+        workProject.setIsActive(true);
+        workProject.setUpdateTime(DateUtil.getZoneDateTime());
+        workProject.setCreateTime(DateUtil.getZoneDateTime());
+        return ResultObj.back(true,200,workProjectService.save(workProject));
+    }
+
+    /**
+     * 新增用户自我评价
+     * @throws URISyntaxException
+     */
+    @ApiOperation("新增用户自我评价 RequestBody")
+    @PostMapping("/insert/self")
+    @Timed
+    public ResultObj insertSelf(@ApiParam(name="self",value="用户自我评价实体",required=true) @RequestBody BSelf self)
+        throws URISyntaxException {
+        self.setIsActive(true);
+        self.setUpdateTime(DateUtil.getZoneDateTime());
+        self.setCreateTime(DateUtil.getZoneDateTime());
+        return ResultObj.back(true,200,selfService.save(self));
+    }
+
+    /**
+     * 新增用户教育背景
+     * @throws URISyntaxException
+     */
+    @ApiOperation("新增用户教育背景 RequestBody")
+    @PostMapping("/insert/education")
+    @Timed
+    public ResultObj insertEducation(@ApiParam(name="education",value="用户教育背景实体",required=true) @RequestBody BEducation education)
+        throws URISyntaxException {
+        education.setIsActive(true);
+        education.setUpdateTime(DateUtil.getZoneDateTime());
+        education.setCreateTime(DateUtil.getZoneDateTime());
+        return ResultObj.back(true,200,educationService.save(education));
+    }
+
+    /**
+     * 通过用户账号查询详细信息
+     */
+    @ApiOperation("通过用户账号查询详细信息 PathVariable")
+    @GetMapping("/select/information/{username}")
+    @Timed
+    public ResultObj selectInformationByUsername(@ApiParam(name="username",value="用户名",required=true) @PathVariable String username) throws URISyntaxException {
+        return ResultObj.back(true,200,informationService.findInformationByUsername(username));
+    }
+
+
+    /**
+     * 通过用户账号查询联系方式
+     */
+    @ApiOperation("通过用户账号查询联系方式 PathVariable")
+    @GetMapping("/select/contact/{username}")
+    @Timed
+    public ResultObj selectContactByUsername(@ApiParam(name="username",value="用户名",required=true) @PathVariable String username) throws URISyntaxException {
+        return ResultObj.back(true,200,informationService.findContactByUsername(username));
+    }
+
+    /**
+     * 通过用户账号查询教育背景
+     */
+    @ApiOperation("通过用户账号查询教育背景 PathVariable")
+    @GetMapping("/select/education/{username}")
+    @Timed
+    public ResultObj selectEducationByUsername(@ApiParam(name="username",value="用户名",required=true) @PathVariable String username) throws URISyntaxException {
+        return ResultObj.back(true,200,informationService.findEducationByUsername(username));
+    }
+
+    /**
+     * 通过用户账号查询工作经验
+     */
+    @ApiOperation("通过用户账号查询工作经验 PathVariable")
+    @GetMapping("/select/work/{username}")
+    @Timed
+    public ResultObj selectWorkByUsername(@ApiParam(name="username",value="用户名",required=true) @PathVariable String username) throws URISyntaxException {
+        return ResultObj.back(true,200,informationService.findWorkByUsername(username));
+    }
+
+    /**
+     * 通过用户账号查询项目经验
+     */
+    @ApiOperation("通过用户账号查询项目经验 PathVariable")
+    @GetMapping("/select/workProject/{username}")
+    @Timed
+    public ResultObj selectWorkProjectByUsername(@ApiParam(name="username",value="用户名",required=true) @PathVariable String username) throws URISyntaxException {
+        return ResultObj.back(true,200,informationService.findWorkProjectByUsername(username));
+    }
+
+    /**
+     * 通过用户账号查询自我评价
+     */
+    @ApiOperation("通过用户账号查询自我评价 PathVariable")
+    @GetMapping("/select/self/{username}")
+    @Timed
+    public ResultObj selectSelfByUsername(@ApiParam(name="username",value="用户名",required=true) @PathVariable String username) throws URISyntaxException {
+        return ResultObj.back(true,200,informationService.findSelfByUsername(username));
+    }
+
+    /**
+     * 通过用户账号查询兴趣爱好
+     */
+    @ApiOperation("通过用户账号查询兴趣爱好 PathVariable")
+    @GetMapping("/select/hobby/{username}")
+    @Timed
+    public ResultObj selectHobbyByUsername(@ApiParam(name="username",value="用户名",required=true) @PathVariable String username) throws URISyntaxException {
+        return ResultObj.back(true,200,informationService.findHobbyByUsername(username));
+    }
+
+    /**
+     * 通过用户账号查询荣誉奖项
+     */
+    @ApiOperation("通过用户账号查询荣誉奖项 PathVariable")
+    @GetMapping("/select/honour/{username}")
+    @Timed
+    public ResultObj selectHonourByUsername(@ApiParam(name="username",value="用户名",required=true) @PathVariable String username) throws URISyntaxException {
+        return ResultObj.back(true,200,informationService.findHonourByUsername(username));
+    }
+
+    /**
+     * 通过用户账号查询求职意向
+     */
+    @ApiOperation("通过用户账号查询求职意向 PathVariable")
+    @GetMapping("/select/jobObjective/{username}")
+    @Timed
+    public ResultObj selectJobObjectiveByUsername(@ApiParam(name="username",value="用户名",required=true) @PathVariable String username) throws URISyntaxException {
+        return ResultObj.back(true,200,informationService.findJobObjectiveByUsername(username));
     }
 }

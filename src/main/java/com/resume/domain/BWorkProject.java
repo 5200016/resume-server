@@ -19,6 +19,13 @@ public class BWorkProject implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "username")
+    private String username;
+
+    @Lob
+    @Column(name = "description")
+    private String description;
+
     @Column(name = "name")
     private String name;
 
@@ -43,15 +50,38 @@ public class BWorkProject implements Serializable {
     @Column(name = "update_time")
     private ZonedDateTime updateTime;
 
-    @ManyToOne
-    private BWork bWork;
-
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public BWorkProject username(String username) {
+        this.username = username;
+        return this;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public BWorkProject description(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getName() {
@@ -158,19 +188,6 @@ public class BWorkProject implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public BWork getBWork() {
-        return bWork;
-    }
-
-    public BWorkProject bWork(BWork bWork) {
-        this.bWork = bWork;
-        return this;
-    }
-
-    public void setBWork(BWork bWork) {
-        this.bWork = bWork;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -195,6 +212,8 @@ public class BWorkProject implements Serializable {
     public String toString() {
         return "BWorkProject{" +
             "id=" + getId() +
+            ", username='" + getUsername() + "'" +
+            ", description='" + getDescription() + "'" +
             ", name='" + getName() + "'" +
             ", responsible='" + getResponsible() + "'" +
             ", startTime='" + getStartTime() + "'" +

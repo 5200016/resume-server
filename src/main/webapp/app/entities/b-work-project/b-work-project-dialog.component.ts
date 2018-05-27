@@ -4,13 +4,11 @@ import { Response } from '@angular/http';
 
 import { Observable } from 'rxjs/Rx';
 import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
+import { JhiEventManager, JhiAlertService, JhiDataUtils } from 'ng-jhipster';
 
 import { BWorkProject } from './b-work-project.model';
 import { BWorkProjectPopupService } from './b-work-project-popup.service';
 import { BWorkProjectService } from './b-work-project.service';
-import { BWork, BWorkService } from '../b-work';
-import { ResponseWrapper } from '../../shared';
 
 @Component({
     selector: 'jhi-b-work-project-dialog',
@@ -22,13 +20,11 @@ export class BWorkProjectDialogComponent implements OnInit {
     authorities: any[];
     isSaving: boolean;
 
-    bworks: BWork[];
-
     constructor(
         public activeModal: NgbActiveModal,
+        private dataUtils: JhiDataUtils,
         private alertService: JhiAlertService,
         private bWorkProjectService: BWorkProjectService,
-        private bWorkService: BWorkService,
         private eventManager: JhiEventManager
     ) {
     }
@@ -36,8 +32,27 @@ export class BWorkProjectDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
-        this.bWorkService.query()
-            .subscribe((res: ResponseWrapper) => { this.bworks = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+    }
+
+    byteSize(field) {
+        return this.dataUtils.byteSize(field);
+    }
+
+    openFile(contentType, field) {
+        return this.dataUtils.openFile(contentType, field);
+    }
+
+    setFileData(event, bWorkProject, field, isImage) {
+        if (event && event.target.files && event.target.files[0]) {
+            const file = event.target.files[0];
+            if (isImage && !/^image\//.test(file.type)) {
+                return;
+            }
+            this.dataUtils.toBase64(file, (base64Data) => {
+                bWorkProject[field] = base64Data;
+                bWorkProject[`${field}ContentType`] = file.type;
+            });
+        }
     }
 
     clear() {
@@ -83,10 +98,6 @@ export class BWorkProjectDialogComponent implements OnInit {
 
     private onError(error) {
         this.alertService.error(error.message, null, null);
-    }
-
-    trackBWorkById(index: number, item: BWork) {
-        return item.id;
     }
 }
 

@@ -1,13 +1,6 @@
 {
     "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "workProject",
-            "otherEntityName": "bWorkProject",
-            "otherEntityRelationshipName": "bWork"
-        }
-    ],
+    "relationships": [],
     "fields": [
         {
             "fieldName": "username",

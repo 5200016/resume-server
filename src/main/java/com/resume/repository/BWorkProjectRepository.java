@@ -17,6 +17,6 @@ public interface BWorkProjectRepository extends JpaRepository<BWorkProject,Long>
     /**
      * 通过用户名查询用户工作项目
      */
-    @Query("select bwp from BWorkProject bwp where bwp.bWork.id = ?1 and bwp.isActive = true")
-    List<BWorkProject> findByWorkId(Long workId);
+    @Query("select bwp from BWorkProject bwp where bwp.username = ?1 and bwp.isActive = true")
+    List<BWorkProject> findByUsername(String username);
 }

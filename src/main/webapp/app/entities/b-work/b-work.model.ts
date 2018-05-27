@@ -13,7 +13,6 @@ export class BWork implements BaseEntity {
         public isActive?: boolean,
         public createTime?: any,
         public updateTime?: any,
-        public workProjects?: BaseEntity[],
     ) {
         this.isActive = false;
     }

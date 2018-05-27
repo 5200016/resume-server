@@ -1,0 +1,79 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myBEducationLabel" jhiTranslate="resumeApp.bEducation.home.createOrEditLabel">Create or edit a B Education</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!bEducation.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="bEducation.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bEducation.username" for="field_username">Username</label>
+            <input type="text" class="form-control" name="username" id="field_username"
+                [(ngModel)]="bEducation.username"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bEducation.enterTime" for="field_enterTime">Enter Time</label>
+            <input type="text" class="form-control" name="enterTime" id="field_enterTime"
+                [(ngModel)]="bEducation.enterTime"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bEducation.stopTime" for="field_stopTime">Stop Time</label>
+            <input type="text" class="form-control" name="stopTime" id="field_stopTime"
+                [(ngModel)]="bEducation.stopTime"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bEducation.school" for="field_school">School</label>
+            <input type="text" class="form-control" name="school" id="field_school"
+                [(ngModel)]="bEducation.school"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bEducation.speciality" for="field_speciality">Speciality</label>
+            <input type="text" class="form-control" name="speciality" id="field_speciality"
+                [(ngModel)]="bEducation.speciality"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bEducation.description" for="field_description">Description</label>
+            <textarea class="form-control" name="description" id="field_description"
+                [(ngModel)]="bEducation.description"  ></textarea>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bEducation.extra" for="field_extra">Extra</label>
+            <input type="text" class="form-control" name="extra" id="field_extra"
+                [(ngModel)]="bEducation.extra"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bEducation.isActive" for="field_isActive">Is Active</label>
+            <input type="checkbox" class="form-control" name="isActive" id="field_isActive"
+                [(ngModel)]="bEducation.isActive"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bEducation.createTime" for="field_createTime">Create Time</label>
+            <div class="d-flex">
+                <input id="field_createTime" type="datetime-local" class="form-control" name="createTime" [(ngModel)]="bEducation.createTime"
+                  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="resumeApp.bEducation.updateTime" for="field_updateTime">Update Time</label>
+            <div class="d-flex">
+                <input id="field_updateTime" type="datetime-local" class="form-control" name="updateTime" [(ngModel)]="bEducation.updateTime"
+                  />
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

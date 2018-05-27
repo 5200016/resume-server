@@ -4,6 +4,14 @@
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="resumeApp.bWorkProject.username">Username</span></dt>
+        <dd>
+            <span>{{bWorkProject.username}}</span>
+        </dd>
+        <dt><span jhiTranslate="resumeApp.bWorkProject.description">Description</span></dt>
+        <dd>
+            <span>{{bWorkProject.description}}</span>
+        </dd>
         <dt><span jhiTranslate="resumeApp.bWorkProject.name">Name</span></dt>
         <dd>
             <span>{{bWorkProject.name}}</span>
@@ -35,12 +43,6 @@
         <dt><span jhiTranslate="resumeApp.bWorkProject.updateTime">Update Time</span></dt>
         <dd>
             <span>{{bWorkProject.updateTime | date:'medium'}}</span>
-        </dd>
-        <dt><span jhiTranslate="resumeApp.bWorkProject.bWork">B Work</span></dt>
-        <dd>
-            <div *ngIf="bWorkProject.bWork">
-                <a [routerLink]="['/b-work', bWorkProject.bWork?.id]">{{bWorkProject.bWork?.id}}</a>
-            </div>
         </dd>
     </dl>
 

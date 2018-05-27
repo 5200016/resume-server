@@ -1,12 +1,9 @@
 package com.resume.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -51,10 +48,6 @@ public class BWork implements Serializable {
 
     @Column(name = "update_time")
     private ZonedDateTime updateTime;
-
-    @OneToMany(mappedBy = "bWork")
-    @JsonIgnore
-    private Set<BWorkProject> workProjects = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -192,31 +185,6 @@ public class BWork implements Serializable {
 
     public void setUpdateTime(ZonedDateTime updateTime) {
         this.updateTime = updateTime;
-    }
-
-    public Set<BWorkProject> getWorkProjects() {
-        return workProjects;
-    }
-
-    public BWork workProjects(Set<BWorkProject> bWorkProjects) {
-        this.workProjects = bWorkProjects;
-        return this;
-    }
-
-    public BWork addWorkProject(BWorkProject bWorkProject) {
-        this.workProjects.add(bWorkProject);
-        bWorkProject.setBWork(this);
-        return this;
-    }
-
-    public BWork removeWorkProject(BWorkProject bWorkProject) {
-        this.workProjects.remove(bWorkProject);
-        bWorkProject.setBWork(null);
-        return this;
-    }
-
-    public void setWorkProjects(Set<BWorkProject> bWorkProjects) {
-        this.workProjects = bWorkProjects;
     }
 
     @Override

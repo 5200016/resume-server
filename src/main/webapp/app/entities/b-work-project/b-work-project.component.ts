@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
-import { JhiEventManager, JhiParseLinks, JhiPaginationUtil, JhiLanguageService, JhiAlertService } from 'ng-jhipster';
+import { JhiEventManager, JhiParseLinks, JhiPaginationUtil, JhiLanguageService, JhiAlertService, JhiDataUtils } from 'ng-jhipster';
 
 import { BWorkProject } from './b-work-project.model';
 import { BWorkProjectService } from './b-work-project.service';
@@ -20,6 +20,7 @@ bWorkProjects: BWorkProject[];
     constructor(
         private bWorkProjectService: BWorkProjectService,
         private alertService: JhiAlertService,
+        private dataUtils: JhiDataUtils,
         private eventManager: JhiEventManager,
         private principal: Principal
     ) {
@@ -47,6 +48,14 @@ bWorkProjects: BWorkProject[];
 
     trackId(index: number, item: BWorkProject) {
         return item.id;
+    }
+
+    byteSize(field) {
+        return this.dataUtils.byteSize(field);
+    }
+
+    openFile(contentType, field) {
+        return this.dataUtils.openFile(contentType, field);
     }
     registerChangeInBWorkProjects() {
         this.eventSubscriber = this.eventManager.subscribe('bWorkProjectListModification', (response) => this.loadAll());
