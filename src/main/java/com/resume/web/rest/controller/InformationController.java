@@ -60,7 +60,8 @@ public class InformationController {
     @ApiOperation("新增用户详细信息 RequestBody")
     @PostMapping("/insert/information")
     @Timed
-    public ResultObj insertInformation(@ApiParam(name="information",value="用户详细信息实体",required=true) @RequestBody BInformation information) throws URISyntaxException {
+    public ResultObj insertInformation(@ApiParam(name="information",value="用户详细信息实体",required=true) @RequestBody BInformation information)
+        throws URISyntaxException {
         information.setIsActive(true);
         information.setUpdateTime(DateUtil.getZoneDateTime());
         information.setCreateTime(DateUtil.getZoneDateTime());
@@ -74,7 +75,8 @@ public class InformationController {
     @ApiOperation("新增用户联系方式 RequestBody")
     @PostMapping("/insert/contact")
     @Timed
-    public ResultObj insertContact(@ApiParam(name="contact",value="用户联系方式实体",required=true) @RequestBody BContact contact) throws URISyntaxException {
+    public ResultObj insertContact(@ApiParam(name="contact",value="用户联系方式实体",required=true) @RequestBody BContact contact)
+        throws URISyntaxException {
         contact.setIsActive(true);
         contact.setUpdateTime(DateUtil.getZoneDateTime());
         contact.setCreateTime(DateUtil.getZoneDateTime());
@@ -88,7 +90,8 @@ public class InformationController {
     @ApiOperation("新增用户荣誉奖项 RequestBody")
     @PostMapping("/insert/honour")
     @Timed
-    public ResultObj insertHonour(@ApiParam(name="honour",value="用户荣誉奖项实体",required=true) @RequestBody BHonour honour) throws URISyntaxException {
+    public ResultObj insertHonour(@ApiParam(name="honour",value="用户荣誉奖项实体",required=true) @RequestBody BHonour honour)
+        throws URISyntaxException {
         honour.setIsActive(true);
         honour.setUpdateTime(DateUtil.getZoneDateTime());
         honour.setCreateTime(DateUtil.getZoneDateTime());
@@ -102,7 +105,8 @@ public class InformationController {
     @ApiOperation("新增用户兴趣特长 RequestBody")
     @PostMapping("/insert/hobby")
     @Timed
-    public ResultObj insertHobby(@ApiParam(name="hobby",value="用户兴趣特长实体",required=true) @RequestBody BHobby hobby) throws URISyntaxException {
+    public ResultObj insertHobby(@ApiParam(name="hobby",value="用户兴趣特长实体",required=true) @RequestBody BHobby hobby)
+        throws URISyntaxException {
         hobby.setIsActive(true);
         hobby.setUpdateTime(DateUtil.getZoneDateTime());
         hobby.setCreateTime(DateUtil.getZoneDateTime());
@@ -116,7 +120,8 @@ public class InformationController {
     @ApiOperation("新增用户求职意向 RequestBody")
     @PostMapping("/insert/jobObjective")
     @Timed
-    public ResultObj insertJobObjective(@ApiParam(name="jobObjective",value="用户求职意向实体",required=true) @RequestBody JobObjective jobObjective) throws URISyntaxException {
+    public ResultObj insertJobObjective(@ApiParam(name="jobObjective",value="用户求职意向实体",required=true) @RequestBody JobObjective jobObjective)
+        throws URISyntaxException {
         jobObjective.setIsActive(true);
         jobObjective.setUpdateTime(DateUtil.getZoneDateTime());
         jobObjective.setCreateTime(DateUtil.getZoneDateTime());
@@ -130,7 +135,8 @@ public class InformationController {
     @ApiOperation("新增用户工作经历 RequestBody")
     @PostMapping("/insert/work")
     @Timed
-    public ResultObj insertWork(@ApiParam(name="workProjectVM",value="用户工作经历实体",required=true) @RequestBody List<WorkProjectVM> workProjectVM) throws URISyntaxException {
+    public ResultObj insertWork(@ApiParam(name="workProjectVM",value="用户工作经历实体",required=true) @RequestBody List<WorkProjectVM> workProjectVM)
+        throws URISyntaxException {
         informationService.insertWorkExperience(workProjectVM);
         return ResultObj.back(true,200,true);
     }

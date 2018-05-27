@@ -88,6 +88,7 @@ public class BTemplateServiceImpl implements BTemplateService{
         if(!TypeUtils.isEmpty(name)){
             nameFlag = 1;
         }
-        return bTemplateRepository.findTemplateByClassify(classifyId,name,classifyFlag,nameFlag,new PageRequest(pageNum,pageSize));
+        return bTemplateRepository.findTemplateByClassify(classifyId,name,
+            classifyFlag,nameFlag,new PageRequest(pageNum,pageSize));
     }
 }

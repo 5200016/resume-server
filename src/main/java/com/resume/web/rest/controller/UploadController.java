@@ -52,7 +52,7 @@ public class UploadController {
     @ApiOperation("上传图片 RequestParam")
     @PostMapping("/upload/avatar")
     @Timed
-    public ResultObj uploadPic(@ApiParam(name="file",value="上传文件",required=true) HttpServletRequest request, @RequestParam MultipartFile myfile,
+    public ResultObj uploadPic(@ApiParam(name="file",value="上传文件",required=true) HttpServletRequest request, @RequestParam("file") MultipartFile myfile,
                                @ApiParam(name="username",value="用户账号",required=true) @RequestParam String username) throws URISyntaxException {
         String avatar = applicationProperties.getAvatorpath();
         new File(UploadUtils.getFullPath(applicationProperties.getFilepath(),applicationProperties.getAvatorpath())).mkdirs();                               //创建文件夹

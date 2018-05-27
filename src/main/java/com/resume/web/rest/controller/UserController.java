@@ -40,7 +40,8 @@ public class UserController {
     @ApiOperation("用户注册 RequestBody")
     @PostMapping("/register/user")
     @Timed
-    public ResultObj registerUser(@ApiParam(name="login",value="用户登录实体",required=true) @RequestBody SLogin login) throws URISyntaxException {
+    public ResultObj registerUser(@ApiParam(name="login",value="用户登录实体",required=true) @RequestBody SLogin login)
+        throws URISyntaxException {
         return ResultObj.back(true,200,loginService.registerUser(login));
     }
 
