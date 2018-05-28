@@ -123,6 +123,22 @@ public class InformationController {
     }
 
     /**
+     * 修改用户荣誉奖项
+     * @throws URISyntaxException
+     */
+    @ApiOperation("修改用户荣誉奖项 RequestBody")
+    @PutMapping("/update/honour")
+    @Timed
+    public ResultObj updateHonour(@ApiParam(name="honour",value="用户荣誉奖项实体",required=true) @RequestBody BHonour honour)
+        throws URISyntaxException {
+        if(TypeUtils.isEmpty(honour.getId())){
+            return ResultObj.backInfo(true,200,"修改失败",null);
+        }
+        honour.setUpdateTime(DateUtil.getZoneDateTime());
+        return ResultObj.back(true,200,honourService.save(honour));
+    }
+
+    /**
      * 新增用户兴趣特长
      * @throws URISyntaxException
      */
@@ -134,6 +150,22 @@ public class InformationController {
         hobby.setIsActive(true);
         hobby.setUpdateTime(DateUtil.getZoneDateTime());
         hobby.setCreateTime(DateUtil.getZoneDateTime());
+        return ResultObj.back(true,200,hobbyService.save(hobby));
+    }
+
+    /**
+     * 修改用户兴趣特长
+     * @throws URISyntaxException
+     */
+    @ApiOperation("修改用户兴趣特长 RequestBody")
+    @PutMapping("/update/hobby")
+    @Timed
+    public ResultObj updateHobby(@ApiParam(name="hobby",value="用户兴趣特长实体",required=true) @RequestBody BHobby hobby)
+        throws URISyntaxException {
+        if(TypeUtils.isEmpty(hobby.getId())){
+            return ResultObj.backInfo(true,200,"修改失败",null);
+        }
+        hobby.setUpdateTime(DateUtil.getZoneDateTime());
         return ResultObj.back(true,200,hobbyService.save(hobby));
     }
 
@@ -153,6 +185,22 @@ public class InformationController {
     }
 
     /**
+     * 修改用户求职意向
+     * @throws URISyntaxException
+     */
+    @ApiOperation("修改用户求职意向 RequestBody")
+    @PutMapping("/update/jobObjective")
+    @Timed
+    public ResultObj updateJobObjective(@ApiParam(name="jobObjective",value="用户求职意向实体",required=true) @RequestBody JobObjective jobObjective)
+        throws URISyntaxException {
+        if(TypeUtils.isEmpty(jobObjective.getId())){
+            return ResultObj.backInfo(true,200,"修改失败",null);
+        }
+        jobObjective.setUpdateTime(DateUtil.getZoneDateTime());
+        return ResultObj.back(true,200,jobObjectiveService.save(jobObjective));
+    }
+
+    /**
      * 新增用户工作经验
      * @throws URISyntaxException
      */
@@ -163,6 +211,22 @@ public class InformationController {
         throws URISyntaxException {
         work.setIsActive(true);
         work.setCreateTime(DateUtil.getZoneDateTime());
+        work.setUpdateTime(DateUtil.getZoneDateTime());
+        return ResultObj.back(true,200,workService.save(work));
+    }
+
+    /**
+     * 修改用户工作经验
+     * @throws URISyntaxException
+     */
+    @ApiOperation("修改用户工作经验 RequestBody")
+    @PutMapping("/update/work")
+    @Timed
+    public ResultObj updateWork(@ApiParam(name="work",value="用户工作经验实体",required=true) @RequestBody BWork work)
+        throws URISyntaxException {
+        if(TypeUtils.isEmpty(work.getId())){
+            return ResultObj.backInfo(true,200,"修改失败",null);
+        }
         work.setUpdateTime(DateUtil.getZoneDateTime());
         return ResultObj.back(true,200,workService.save(work));
     }
@@ -183,6 +247,22 @@ public class InformationController {
     }
 
     /**
+     * 修改用户项目经验
+     * @throws URISyntaxException
+     */
+    @ApiOperation("修改用户项目经验 RequestBody")
+    @PutMapping("/update/workProject")
+    @Timed
+    public ResultObj updateWorkProject(@ApiParam(name="workProject",value="用户项目经验实体",required=true) @RequestBody BWorkProject workProject)
+        throws URISyntaxException {
+        if(TypeUtils.isEmpty(workProject.getId())){
+            return ResultObj.backInfo(true,200,"修改失败",null);
+        }
+        workProject.setUpdateTime(DateUtil.getZoneDateTime());
+        return ResultObj.back(true,200,workProjectService.save(workProject));
+    }
+
+    /**
      * 新增用户自我评价
      * @throws URISyntaxException
      */
@@ -198,6 +278,22 @@ public class InformationController {
     }
 
     /**
+     * 修改用户自我评价
+     * @throws URISyntaxException
+     */
+    @ApiOperation("修改用户自我评价 RequestBody")
+    @PutMapping("/update/self")
+    @Timed
+    public ResultObj updateSelf(@ApiParam(name="self",value="用户自我评价实体",required=true) @RequestBody BSelf self)
+        throws URISyntaxException {
+        if(TypeUtils.isEmpty(self.getId())){
+            return ResultObj.backInfo(true,200,"修改失败",null);
+        }
+        self.setUpdateTime(DateUtil.getZoneDateTime());
+        return ResultObj.back(true,200,selfService.save(self));
+    }
+
+    /**
      * 新增用户教育背景
      * @throws URISyntaxException
      */
@@ -209,6 +305,22 @@ public class InformationController {
         education.setIsActive(true);
         education.setUpdateTime(DateUtil.getZoneDateTime());
         education.setCreateTime(DateUtil.getZoneDateTime());
+        return ResultObj.back(true,200,educationService.save(education));
+    }
+
+    /**
+     * 修改用户教育背景
+     * @throws URISyntaxException
+     */
+    @ApiOperation("修改用户教育背景 RequestBody")
+    @PutMapping("/update/education")
+    @Timed
+    public ResultObj updateEducation(@ApiParam(name="education",value="用户教育背景实体",required=true) @RequestBody BEducation education)
+        throws URISyntaxException {
+        if(TypeUtils.isEmpty(education.getId())){
+            return ResultObj.backInfo(true,200,"修改失败",null);
+        }
+        education.setUpdateTime(DateUtil.getZoneDateTime());
         return ResultObj.back(true,200,educationService.save(education));
     }
 
@@ -254,6 +366,17 @@ public class InformationController {
     }
 
     /**
+     * 删除用户工作经验
+     */
+    @ApiOperation("删除用户工作经验 PathVariable")
+    @DeleteMapping("/delete/work/{id}")
+    @Timed
+    public ResultObj deleteWorkById(@ApiParam(name="id",value="主键id",required=true) @PathVariable Long id) throws URISyntaxException {
+        workService.delete(id);
+        return ResultObj.back(true,200,true);
+    }
+
+    /**
      * 通过用户账号查询项目经验
      */
     @ApiOperation("通过用户账号查询项目经验 PathVariable")
@@ -261,6 +384,17 @@ public class InformationController {
     @Timed
     public ResultObj selectWorkProjectByUsername(@ApiParam(name="username",value="用户名",required=true) @PathVariable String username) throws URISyntaxException {
         return ResultObj.back(true,200,informationService.findWorkProjectByUsername(username));
+    }
+
+    /**
+     * 删除用户项目经验
+     */
+    @ApiOperation("删除用户项目经验 PathVariable")
+    @DeleteMapping("/delete/workProject/{id}")
+    @Timed
+    public ResultObj deleteWorkProjectById(@ApiParam(name="id",value="主键id",required=true) @PathVariable Long id) throws URISyntaxException {
+        workProjectService.delete(id);
+        return ResultObj.back(true,200,true);
     }
 
     /**
