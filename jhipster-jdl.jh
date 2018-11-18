@@ -1,3 +1,15 @@
+entity STeam {
+     TeamType Integer,
+     Name String,
+     Avatar String,
+     Introduction TextBlob,
+     Job String,
+     Level Integer,
+     IsActive Boolean,
+     CreateTime ZonedDateTime,
+     UpdateTime ZonedDateTime
+}
+
 entity SLogin {
      Username String,
      Password String,
