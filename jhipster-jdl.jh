@@ -25,6 +25,8 @@ entity SRole {
      UpdateTime ZonedDateTime
 }
 
+
+
 entity SUser {
      Username String,
      Nickname String,
